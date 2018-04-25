@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<es.upv.pros.tatami.adaptation.componentsModel:ComponentsModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:es.upv.pros.tatami.adaptation.componentsModel="http://es.upv.pros.tatami.adaptation.componentsModel" name="SmartCarSAE">
+  <componentsModelComponents xsi:type="es.upv.pros.tatami.adaptation.componentsModel:AdaptiveReadyComponent" name="SmartCar.Device.Engine" id="AdaptiveReadyComponentImpl_96TrZf">
+    <componentServiceSupplies name="Engine" id="ServiceSupplyImpl_5PgSN9" realizes="InterfaceImpl_6F005s"/>
+  </componentsModelComponents>
+  <componentsModelComponents xsi:type="es.upv.pros.tatami.adaptation.componentsModel:AdaptiveReadyComponent" name="SmartCar.Device.CollisionSensor.Frontal" id="AdaptiveReadyComponentImpl_3iFT8F">
+    <componentServiceSupplies name="FrontalCollisionSensor" id="ServiceSupplyImpl_68J3uq" realizes="InterfaceImpl_3jWACG"/>
+  </componentsModelComponents>
+  <componentsModelComponents xsi:type="es.upv.pros.tatami.adaptation.componentsModel:AdaptiveReadyComponent" name="SmartCar.Device.CollisionSensor.Rear" id="AdaptiveReadyComponentImpl_44qyOj">
+    <componentServiceSupplies name="RearCollisionSensor" id="ServiceSupplyImpl_9XTN2d" realizes="InterfaceImpl_3jWACG"/>
+  </componentsModelComponents>
+  <componentsModelComponents xsi:type="es.upv.pros.tatami.adaptation.componentsModel:AdaptiveReadyComponent" name="SmartCar.Device.Steering" id="AdaptiveReadyComponentImpl_3YG14J">
+    <componentServiceSupplies name="Steering" id="ServiceSupplyImpl_9ehNGb" realizes="InterfaceImpl_7DfZXW"/>
+  </componentsModelComponents>
+  <componentsModelComponents xsi:type="es.upv.pros.tatami.adaptation.componentsModel:AdaptiveReadyComponent" name="SmartCar.Device.DistanceSensor.Frontal" id="AdaptiveReadyComponentImpl_52Gvoc">
+    <componentServiceSupplies name="FrontalDistanceSensor" id="ServiceSupplyImpl_7y1vCI" realizes="InterfaceImpl_5Vx2RR"/>
+  </componentsModelComponents>
+  <componentsModelComponents xsi:type="es.upv.pros.tatami.adaptation.componentsModel:AdaptiveReadyComponent" name="SmartCar.Device.DistanceSensor.Rear" id="AdaptiveReadyComponentImpl_2emYiD">
+    <componentServiceSupplies name="RearDistanceSensor" id="ServiceSupplyImpl_6JgQRK" realizes="InterfaceImpl_5Vx2RR"/>
+  </componentsModelComponents>
+  <componentsModelComponents xsi:type="es.upv.pros.tatami.adaptation.componentsModel:AdaptiveReadyComponent" name="SAE.L1.ACC" id="AdaptiveReadyComponentImpl_70iTM7">
+    <parameters name="SecurityDistance" id="ParameterImpl_7lyi5U" type="INTEGER" optional="true"/>
+    <componentServiceRequirements name="Engine" id="ServiceRequirementImpl_6VBAx7" requiresImplementationOf="InterfaceImpl_6F005s" dynamic="false" minimumBindings="1" maximumBindings="1"/>
+    <componentServiceRequirements name="DistanceSensor" id="ServiceRequirementImpl_4UR2xE" requiresImplementationOf="InterfaceImpl_5Vx2RR" dynamic="false" minimumBindings="1"/>
+    <componentServiceSupplies name="AutoPilot" id="ServiceSupplyImpl_50yoiR" realizes="InterfaceImpl_4Ri93X"/>
+  </componentsModelComponents>
+  <componentsModelComponents xsi:type="es.upv.pros.tatami.adaptation.componentsModel:AdaptiveReadyComponent" name="SAE.L3.TrafficJamChauffeur" id="AdaptiveReadyComponentImpl_83ddFb">
+    <parameters name="SecurityDistance" id="ParameterImpl_9w7IpE" type="INTEGER" optional="true"/>
+    <componentServiceSupplies name="AutoPilot" id="ServiceSupplyImpl_4aesF9" realizes="InterfaceImpl_4Ri93X"/>
+  </componentsModelComponents>
+  <componentsModelComponents xsi:type="es.upv.pros.tatami.adaptation.componentsModel:AdaptiveReadyComponent" name="SAE.L3.HighwayChauffeur" id="AdaptiveReadyComponentImpl_99XzOR">
+    <parameters name="CruiseSpeed" id="ParameterImpl_45qnHm" type="INTEGER" optional="true"/>
+    <componentServiceSupplies name="AutoPilot" id="ServiceSupplyImpl_7kDG1D" realizes="InterfaceImpl_4Ri93X"/>
+  </componentsModelComponents>
+  <componentsModelComponents xsi:type="es.upv.pros.tatami.adaptation.componentsModel:AdaptiveReadyComponent" name="SAE.L3.DDTFallback" id="AdaptiveReadyComponentImpl_73EA8n">
+    <parameters name="trigger" id="ParameterImpl_6hsqSc" type="INTEGER" optional="true"/>
+    <componentServiceSupplies name="AutoPilot" id="ServiceSupplyImpl_1RH5kf" realizes="InterfaceImpl_4Ri93X"/>
+  </componentsModelComponents>
+  <componentsModelComponents xsi:type="es.upv.pros.tatami.adaptation.componentsModel:AdaptiveReadyComponent" name="SAE.L0.ManualDriving" id="AdaptiveReadyComponentImpl_8Wtqpq"/>
+  <componentsModelComponents xsi:type="es.upv.pros.tatami.adaptation.componentsModel:AdaptiveReadyComponent" name="SmartCar.HiL.DriverNotifyingService" id="AdaptiveReadyComponentImpl_4mkhNn">
+    <parameters name="timeout" id="ParameterImpl_7U2OKM" type="INTEGER" optional="true"/>
+  </componentsModelComponents>
+  <componentsModelInterfaces id="InterfaceImpl_4Ri93X" name="IAutoPilot" suppliedBy="ServiceSupplyImpl_50yoiR ServiceSupplyImpl_7kDG1D ServiceSupplyImpl_4aesF9 ServiceSupplyImpl_1RH5kf"/>
+  <componentsModelInterfaces id="InterfaceImpl_6F005s" name="IEngine" suppliedBy="ServiceSupplyImpl_5PgSN9" requiredFrom="ServiceRequirementImpl_6VBAx7"/>
+  <componentsModelInterfaces id="InterfaceImpl_3jWACG" name="ICollisionSensor" suppliedBy="ServiceSupplyImpl_68J3uq ServiceSupplyImpl_9XTN2d"/>
+  <componentsModelInterfaces id="InterfaceImpl_17XgsW" name="IHiLTask"/>
+  <componentsModelInterfaces id="InterfaceImpl_8PObPi" name="ILaneTrackingSensor"/>
+  <componentsModelInterfaces id="InterfaceImpl_7DfZXW" name="ISteering" suppliedBy="ServiceSupplyImpl_9ehNGb"/>
+  <componentsModelInterfaces id="InterfaceImpl_5Vx2RR" name="IDistanceSensor" suppliedBy="ServiceSupplyImpl_7y1vCI ServiceSupplyImpl_6JgQRK" requiredFrom="ServiceRequirementImpl_4UR2xE"/>
+  <componentsModelInterfaces id="InterfaceImpl_8Z69h1" name="IGPS"/>
+  <componentsModelInterfaces id="InterfaceImpl_11OwB0" name="INavigator"/>
+  <componentsModelInterfaces id="InterfaceImpl_3ms2QU" name="IWeatherStation"/>
+  <componentsModelInterfaces id="InterfaceImpl_7pJXQ0" name="ISteeringWheelPressureSensor"/>
+  <componentsModelInterfaces id="InterfaceImpl_3kR3em" name="ISpeedometer"/>
+  <componentsModelInterfaces id="InterfaceImpl_8LRiGv" name="IBattery"/>
+</es.upv.pros.tatami.adaptation.componentsModel:ComponentsModel>

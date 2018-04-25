@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: SUA2018.MAPEK
+Bundle-SymbolicName: SUA2018.MAPEK
+Bundle-Version: 1.0.0
+Bundle-Activator: sua2018.mapek.Activator
+Import-Package: es.upv.pros.tatami.autonomic.adaptation.framework.systemAPI.componentConfigurator.interfaces,
+ es.upv.pros.tatami.autonomic.adaptation.framework.systemComponentsManager.interfaces,
+ org.osgi.framework;version="1.3.0"
+Export-Package: es.upv.dsic.mitss.sua.smartcarsae.mapek.components,
+ es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces

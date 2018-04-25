@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: SmartCar.Starter.Basic
+Bundle-SymbolicName: SmartCar.Starter.Basic
+Bundle-Version: 1.0.0
+Bundle-Activator: smartcar.starter.Activator
+Bundle-Vendor: @jjfons
+Import-Package: es.upv.pros.iot.smartcar.interfaces,
+ es.upv.pros.tatami.autonomic.adaptation.framework.systemAPI.componentConfigurator.interfaces,
+ es.upv.pros.tatami.autonomic.adaptation.framework.systemComponentsManager.interfaces,
+ org.osgi.framework

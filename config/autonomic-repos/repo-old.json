@@ -1,0 +1,220 @@
+{
+	"products":[
+
+		{"Product-Name":"SmartCar", "Product-Version":"1.1.0", "requires":[
+							{"Feature-Name":"SmartCarRemote"},
+							{"Feature-Name":"SerialConnection"},
+							{"Feature-Name":"EngineRemote"},
+							{"Feature-Name":"SteeringRemote"},
+							{"Feature-Name":"FrontalDistanceSensor"},
+							{"Feature-Name":"CAS"},
+							{"Feature-Name":"Logger"},
+							{"Feature-Name":"FrontalDistanceSensor"},
+							{"Feature-Name":"RearDistanceSensor"},
+							{"Feature-Name":"NavigatorRemote"},
+							{"Feature-Name":"NavigatorCommunicator"}]},
+
+		{"Product-Name":"NavigationEnabledCar", "Product-Version":"1.1.0", "requires":[
+							{"Feature-Name":"SmartCarRemote"},
+							{"Feature-Name":"SerialConnection"},
+							{"Feature-Name":"EngineRemote"},
+							{"Feature-Name":"SteeringRemote"},
+							{"Feature-Name":"FrontalDistanceSensor"},
+							{"Feature-Name":"RearDistanceSensor"},
+							{"Feature-Name":"CAS"},
+							{"Feature-Name":"Logger"},
+							{"Feature-Name":"FrontalDistanceSensor"},
+							{"Feature-Name":"NavigatorRemote"}]},
+
+		{"Product-Name":"RemoteCar", "Product-Version":"1.1.0", "requires":[
+							{"Feature-Name":"SmartCarRemote"},
+							{"Feature-Name":"SerialConnection"},
+							{"Feature-Name":"EngineRemote"},
+							{"Feature-Name":"SteeringRemote"},
+							{"Feature-Name":"FrontalDistanceSensor"},
+							{"Feature-Name":"RearDistanceSensor"},
+							{"Feature-Name":"Logger"}]},
+
+		{"Product-Name":"Car", "Product-Version":"1.1.0", "requires":[
+							{"Feature-Name":"SmartCar"},
+							{"Feature-Name":"SerialConnection"},
+							{"Feature-Name":"Engine"},
+							{"Feature-Name":"Steering"},
+							{"Feature-Name":"FrontalDistanceSensor"},
+							{"Feature-Name":"RearDistanceSensor"},
+							{"Feature-Name":"CAS"},
+							{"Feature-Name":"Logger"}]}
+
+	],
+
+
+	"features":[
+
+	{"Feature-Name":"Messaging", "Feature-Version":"1.0.0", "requires":[{"Bundle-SymbolicName":"Java-json"}, 
+							{"Bundle-SymbolicName":"es.upv.pros.tatami.messaging"},
+							{"Bundle-SymbolicName":"S4CMessaging.interfaces"},
+							{"Bundle-SymbolicName":"S4CSmartTraffic.interfaces"},
+							{"Bundle-SymbolicName":"S4CMessaging.components"}]},
+
+	{"Feature-Name":"Vehicles","Feature-Version":"1.0.0", "requires":[{"Feature-Name":"Messaging"},
+							{"Bundle-SymbolicName":"es.upv.pros.tatami.communication.HTTP.components"},
+							{"Bundle-SymbolicName":"Java-json"},
+							{"Feature-Name":"MQTTGateway"},
+							{"Bundle-SymbolicName":"S4CSmartTraffic.components"},
+							{"Bundle-SymbolicName":"S4CSmartTraffic.Vehicles"}]},
+
+	{"Feature-Name":"SmartCar","Feature-Version":"1.0.0", "requires":[{"Bundle-SymbolicName":"org.eclipse.osgi.services"},
+							{"Feature-Name":"Vehicles"},
+							{"Bundle-SymbolicName":"es.upv.pros.tatami.gateway.interfaces"},
+							{"Bundle-SymbolicName":"SmartCar"},
+							{"Bundle-SymbolicName":"SmartCar.starter"}]},
+
+	{"Feature-Name":"Gateway","Feature-Version":"1.0.0", "requires":[{"Bundle-SymbolicName":"Java-json"},
+							{"Bundle-SymbolicName":"org.eclipse.osgi.services"},
+							{"Bundle-SymbolicName":"es.upv.pros.tatami.gateway.interfaces"},
+							{"Bundle-SymbolicName":"es.upv.pros.tatami.gateway.components"}]},
+
+	{"Feature-Name":"SerialGateway","Feature-Version":"1.0.0", "requires":[{"Bundle-SymbolicName":"rxtx"},
+							{"Bundle-SymbolicName":"org.eclipse.equinox.event"},
+							{"Feature-Name":"Gateway"},
+							{"Bundle-SymbolicName":"es.upv.pros.tatami.gateway.tunnel.serial.interfaces"},
+							{"Bundle-SymbolicName":"es.upv.pros.tatami.gateway.tunnel.serial.components"},
+							{"Bundle-SymbolicName":"es.upv.pros.tatami.gateway.tunnel.serial.virtual.components"},
+							{"Bundle-SymbolicName":"SmartCar.Gateway.Serial"}]},
+
+	{"Feature-Name":"SerialConnection","Feature-Version":"1.0.0", "requires":[{"Feature-Name":"SerialGateway"},
+							{"Feature-Name":"SmartCar"},
+							{"Bundle-SymbolicName":"SmartCar.Tunnel.starter"}]},
+		
+	{"Feature-Name":"Logger","Feature-Version":"1.0.0", "requires":[{"Bundle-SymbolicName":"org.eclipse.osgi.services"},
+							{"Bundle-SymbolicName":"es.upv.pros.tatami.gateway.interfaces"},
+							{"Bundle-SymbolicName":"SmartCar.Commands.Logger"}]},
+
+	{"Feature-Name":"SmartCarRemote","Feature-Version":"1.0.0", "requires":[{"Bundle-SymbolicName":"org.restlet"},
+							{"Bundle-SymbolicName":"es.upv.pros.tatami.security"},
+							{"Feature-Name":"SmartCar"},
+							{"Bundle-SymbolicName":"SmartCar.RESTAPI"}]},
+
+	{"Feature-Name":"Engine","Feature-Version":"1.0.0", "requires":[{"Feature-Name":"SmartCar"},
+							{"Feature-Name":"SerialGateway"},
+							{"Bundle-SymbolicName":"SmartCar.Device.Engine"}]},
+
+	{"Feature-Name":"EngineRemote","Feature-Version":"1.0.0", "requires":[{"Feature-Name":"Engine"},
+							{"Feature-Name":"SmartCarRemote"},
+							{"Bundle-SymbolicName":"SmartCar.Device.Engine.RESTAPI.extension"}]},
+
+	{"Feature-Name":"Steering","Feature-Version":"1.0.0", "requires":[{"Feature-Name":"SmartCar"},
+							{"Feature-Name":"SerialGateway"},
+							{"Bundle-SymbolicName":"SmartCar.Device.Steering"}]},
+
+	{"Feature-Name":"SteeringRemote","Feature-Version":"1.0.0", "requires":[{"Feature-Name":"Steering"},
+							{"Feature-Name":"SmartCarRemote"},
+							{"Bundle-SymbolicName":"SmartCar.Device.Steering.RESTAPI.extension"}]},
+
+	{"Feature-Name":"FrontalDistanceSensor","Feature-Version":"1.0.0", "requires":[{"Feature-Name":"SmartCar"},
+							{"Feature-Name":"SerialGateway"},
+							{"Bundle-SymbolicName":"SmartCar.Device.DistanceSensor"},
+							{"Bundle-SymbolicName":"SmartCar.Device.FrontalDistanceSensor"}]},
+
+	{"Feature-Name":"RearDistanceSensor","Feature-Version":"1.0.0", "requires":[{"Feature-Name":"SmartCar"},
+							{"Feature-Name":"SerialGateway"},
+							{"Bundle-SymbolicName":"SmartCar.Device.DistanceSensor"},
+							{"Bundle-SymbolicName":"SmartCar.Device.RearDistanceSensor"}]},
+
+	{"Feature-Name":"CollisionSensor","Feature-Version":"1.0.0", "requires":[{"Feature-Name":"SmartCar"},
+							{"Feature-Name":"SerialGateway"},
+							{"Bundle-SymbolicName":"SmartCar.Device.CollisionSensor"}]},
+
+	{"Feature-Name":"CAS","Feature-Version":"1.0.0", "description":"Creates a CAS_Engine that replaces the standard Engine to better handle distances",
+			  "requires":[{"Feature-Name":"SmartCar"},
+							{"Feature-Name":"Engine"},
+							{"Feature-Name":"FrontalDistanceSensor"},
+							{"Bundle-SymbolicName":"SmartCar.Service.CollisionAvoidance"}]},
+
+	{"Feature-Name":"Navigator","Feature-Version":"1.0.0", "requires":[{"Feature-Name":"SmartCar"},
+							{"Feature-Name":"Engine"},
+							{"Feature-Name":"Steering"},
+							{"Bundle-SymbolicName":"SmartVehicle.Navigator"},
+							{"Bundle-SymbolicName":"SmartCar.Navigator"},
+							{"Bundle-SymbolicName":"SmartCar.Navigator.starter"}]},
+
+	{"Feature-Name":"NavigatorRemote","Feature-Version":"1.0.0", "requires":[{"Feature-Name":"Navigator"},
+							{"Feature-Name":"SmartCarRemote"},
+							{"Bundle-SymbolicName":"SmartCar.Navigator.RESTAPI.extension"}]},
+
+	{"Feature-Name":"NavigatorCommunicator","Feature-Version":"1.0.0", "requires":[{"Feature-Name":"Navigator"},
+							{"Feature-Name":"MQTTGateway"},
+							{"Bundle-SymbolicName":"SmartVehicle.Navigator.NavigatorCommunicator"},
+							{"Bundle-SymbolicName":"SmartVehicle.Navigator.NavigatorCommunicator.starter"}]},
+
+	{"Feature-Name":"MQTT","Feature-Version":"1.0.0", "description":"Improved MQTT connections with a Command Executor Strategy",
+			  "requires":[{"Bundle-SymbolicName":"org.eclipse.paho.client.mqttv3"},
+							{"Bundle-SymbolicName":"org.eclipse.osgi.services"},
+							{"Bundle-SymbolicName":"es.upv.pros.tatami.messaging"},
+							{"Bundle-SymbolicName":"es.upv.pros.tatami.command.executor"},
+							{"Bundle-SymbolicName":"es.upv.pros.tatami.messaging.communication.eventing"},
+							{"Bundle-SymbolicName":"es.upv.pros.tatami.messaging.communication.MQTT"}]},
+
+	{"Feature-Name":"MQTTGateway","Feature-Version":"1.0.0","requires":[{"Feature-Name":"MQTT"},
+							{"Bundle-SymbolicName":"SmartCar.comm.MQTT.starter"}]}
+
+
+	],
+
+
+
+
+	"components-groups":[
+		{"id":"core", "url":"http://localhost/OSGiOBR/core"},
+		{"id":"tatami", "url":"http://localhost/OSGiOBR/tatami"},
+		{"id":"s4csmarttraffic", "url":"http://localhost/OSGiOBR/s4csmarttraffic"},
+		{"id":"smartcar", "url":"http://localhost/OSGiOBR/smartcar"}
+	],
+	"components":[
+		{"Bundle-SymbolicName":"org.eclipse.osgi.services", "Bundle-Version":"3.3.100", "Bundle-FileName":"org.eclipse.osgi.services_3.3.100.v20120522-1822.jar", "component-group":"core"},
+		{"Bundle-SymbolicName":"org.eclipse.equinox.event", "Bundle-Version":"1.3.100", "Bundle-FileName":"org.eclipse.equinox.event_1.3.100.v20140115-1647.jar", "component-group":"core"},
+		{"Bundle-SymbolicName":"Java-json", "Bundle-Version":"1.0.0", "Bundle-FileName":"java.json.jar", "component-group":"core"},
+		{"Bundle-SymbolicName":"org.xml.sax", "Bundle-Version":"1.0.0", "Bundle-FileName":"org.xml.sax_1.0.0.jar", "component-group":"core"},
+		{"Bundle-SymbolicName":"rxtx", "Bundle-Version":"2.2.2", "Bundle-FileName":"rxtx_2.2.2.jar", "component-group":"core"},
+		{"Bundle-SymbolicName":"org.restlet", "Bundle-Version":"1.0.0", "Bundle-FileName":"org.restlet.jar", "component-group":"core"},
+		{"Bundle-SymbolicName":"org.eclipse.paho.client.mqttv3", "Bundle-Version":"1.1.0", "Bundle-FileName":"org.eclipse.paho.client.mqttv3_1.1.0", "component-group":"core"},
+		{"Bundle-SymbolicName":"es.upv.pros.tatami.messaging", "Bundle-Version":"1.0.2", "Bundle-FileName":"es.upv.pros.tatami.messaging_1.0.2.jar", "component-group":"tatami"},
+		{"Bundle-SymbolicName":"es.upv.pros.tatami.messaging.communication.MQTT", "Bundle-Version":"1.0.8", "Bundle-FileName":"es.upv.pros.tatami.messaging.communication.MQTT_1.0.8.jar", "component-group":"tatami", "description":"Provides a new Command Executor Strategy to deal with MQTT connections"},
+		{"Bundle-SymbolicName":"es.upv.pros.tatami.messaging.communication.eventing", "Bundle-Version":"1.0.1", "Bundle-FileName":"es.upv.pros.tatami.messaging.communication.eventing_1.0.1.jar", "component-group":"tatami"},
+		{"Bundle-SymbolicName":"es.upv.pros.tatami.communication.HTTP.components", "Bundle-Version":"1.0.0", "Bundle-FileName":"es.upv.pros.tatami.communication.HTTP.components_1.0.0.jar", "component-group":"tatami"},
+		{"Bundle-SymbolicName":"es.upv.pros.tatami.gateway.interfaces", "Bundle-Version":"1.0.0", "Bundle-FileName":"es.upv.pros.tatami.gateway.interfaces_1.0.0.jar", "component-group":"tatami"},
+		{"Bundle-SymbolicName":"es.upv.pros.tatami.gateway.components", "Bundle-Version":"1.0.1", "Bundle-FileName":"es.upv.pros.tatami.gateway.components_1.0.1.jar", "component-group":"tatami"},
+		{"Bundle-SymbolicName":"es.upv.pros.tatami.gateway.tunnel.serial.interfaces", "Bundle-Version":"1.0.0", "Bundle-FileName":"es.upv.pros.tatami.gateway.tunnel.serial.interfaces_1.0.0.jar", "component-group":"tatami"},
+		{"Bundle-SymbolicName":"es.upv.pros.tatami.gateway.tunnel.serial.components", "Bundle-Version":"1.0.1", "Bundle-FileName":"es.upv.pros.tatami.gateway.tunnel.serial.components_1.0.1.jar", "component-group":"tatami"},
+		{"Bundle-SymbolicName":"es.upv.pros.tatami.gateway.tunnel.serial.virtual.components", "Bundle-Version":"1.0.1", "Bundle-FileName":"es.upv.pros.tatami.gateway.tunnel.serial.virtual.components_1.0.1.jar", "component-group":"tatami"},
+		{"Bundle-SymbolicName":"es.upv.pros.tatami.security", "Bundle-Version":"1.0.0", "Bundle-FileName":"es.upv.pros.tatami.security_1.0.0.jar", "component-group":"tatami"},
+		{"Bundle-SymbolicName":"es.upv.pros.tatami.command.executor", "Bundle-Version":"1.0.0", "Bundle-FileName":"es.upv.pros.tatami.command.executor_1.0.0.jar", "component-group":"tatami"},
+		{"Bundle-SymbolicName":"S4CMessaging.interfaces", "Bundle-Version":"1.0.2", "Bundle-FileName":"S4CMessaging.interfaces_1.0.2.jar", "component-group":"s4csmarttraffic"},
+		{"Bundle-SymbolicName":"S4CMessaging.components", "Bundle-Version":"1.0.5", "Bundle-FileName":"S4CMessaging.components_1.0.5.jar", "component-group":"s4csmarttraffic"},
+		{"Bundle-SymbolicName":"S4CSmartTraffic.interfaces", "Bundle-Version":"1.0.2", "Bundle-FileName":"S4CSmartTraffic.interfaces_1.0.2.jar", "component-group":"s4csmarttraffic"},
+		{"Bundle-SymbolicName":"S4CSmartTraffic.components", "Bundle-Version":"1.0.5", "Bundle-FileName":"S4CSmartTraffic.components_1.0.5.jar", "component-group":"s4csmarttraffic"},
+		{"Bundle-SymbolicName":"S4CSmartTraffic.Vehicles", "Bundle-Version":"1.0.6", "Bundle-FileName":"S4CSmartTraffic.Vehicles_1.0.6.jar", "component-group":"s4csmarttraffic", "description":"SmartDevice's Interfaces minor changes"},
+		{"Bundle-SymbolicName":"SmartVehicle.Navigator", "Bundle-Version":"1.0.7", "Bundle-FileName":"SmartVehicle.Navigator_1.0.7.jar", "component-group":"s4csmarttraffic"},
+		{"Bundle-SymbolicName":"SmartVehicle.Navigator.NavigatorCommunicator", "Bundle-Version":"1.0.3", "Bundle-FileName":"SmartVehicle.Navigator.NavigatorCommunicator_1.0.3.jar", "component-group":"s4csmarttraffic"},
+		{"Bundle-SymbolicName":"SmartVehicle.Navigator.NavigatorCommunicator.starter", "Bundle-Version":"1.0.1", "Bundle-FileName":"SmartVehicle.Navigator.NavigatorCommunicator.starter_1.0.1.jar", "component-group":"smartcar"},
+		{"Bundle-SymbolicName":"SmartCar", "Bundle-Version":"1.0.1", "Bundle-FileName":"SmartCar_1.0.1.jar", "component-group":"smartcar"},
+		{"Bundle-SymbolicName":"SmartCar.starter", "Bundle-Version":"1.0.2", "Bundle-FileName":"SmartCar.starter_1.0.2.jar", "component-group":"smartcar"},
+		{"Bundle-SymbolicName":"SmartCar.Gateway.Serial", "Bundle-Version":"1.0.0", "Bundle-FileName":"SmartCar.Gateway.Serial_1.0.0.jar", "component-group":"smartcar"},
+		{"Bundle-SymbolicName":"SmartCar.Tunnel.starter", "Bundle-Version":"1.0.2", "Bundle-FileName":"SmartCar.Tunnel.starter_1.0.2.jar", "component-group":"smartcar"},
+		{"Bundle-SymbolicName":"SmartCar.Commands.Logger", "Bundle-Version":"1.0.0", "Bundle-FileName":"SmartCar.Commands.Logger_1.0.0.jar", "component-group":"smartcar"},
+		{"Bundle-SymbolicName":"SmartCar.RESTAPI", "Bundle-Version":"1.0.1", "Bundle-FileName":"SmartCar.RESTAPI_1.0.1.jar", "component-group":"smartcar"},
+		{"Bundle-SymbolicName":"SmartCar.Device.Engine", "Bundle-Version":"1.0.1", "Bundle-FileName":"SmartCar.Device.Engine_1.0.1.jar", "component-group":"smartcar", "description":"Engine interfaces changes implementations"},
+		{"Bundle-SymbolicName":"SmartCar.Device.Engine.RESTAPI.extension", "Bundle-Version":"1.0.0", "Bundle-FileName":"SmartCar.Device.Engine.RESTAPI.extension_1.0.0.jar", "component-group":"smartcar"},
+		{"Bundle-SymbolicName":"SmartCar.Device.Steering", "Bundle-Version":"1.0.0", "Bundle-FileName":"SmartCar.Device.Steering_1.0.0.jar", "component-group":"smartcar"},
+		{"Bundle-SymbolicName":"SmartCar.Device.Steering.RESTAPI.extension", "Bundle-Version":"1.0.0", "Bundle-FileName":"SmartCar.Device.Steering.RESTAPI.extension_1.0.0.jar", "component-group":"smartcar"},
+		{"Bundle-SymbolicName":"SmartCar.Device.DistanceSensor", "Bundle-Version":"1.0.0", "Bundle-FileName":"SmartCar.Device.DistanceSensor_1.0.0.jar", "component-group":"smartcar"},
+		{"Bundle-SymbolicName":"SmartCar.Device.RearDistanceSensor", "Bundle-Version":"1.0.2", "Bundle-FileName":"SmartCar.Device.RearDistanceSensor_1.0.2.jar", "component-group":"smartcar"},
+		{"Bundle-SymbolicName":"SmartCar.Device.FrontalDistanceSensor", "Bundle-Version":"1.0.2", "Bundle-FileName":"SmartCar.Device.FrontalDistanceSensor_1.0.2.jar", "component-group":"smartcar"},
+		{"Bundle-SymbolicName":"SmartCar.Device.CollisionSensor", "Bundle-Version":"1.0.0", "Bundle-FileName":"SmartCar.Device.CollisionSensor_1.0.0.jar", "component-group":"smartcar"},
+		{"Bundle-SymbolicName":"SmartCar.Service.CollisionAvoidance", "Bundle-Version":"1.0.1", "Bundle-FileName":"SmartCar.Service.CollisionAvoidance_1.0.1.jar", "component-group":"smartcar"},
+		{"Bundle-SymbolicName":"SmartCar.Navigator", "Bundle-Version":"1.0.2", "Bundle-FileName":"SmartCar.Navigator_1.0.2.jar", "component-group":"smartcar"},
+		{"Bundle-SymbolicName":"SmartCar.Navigator.RESTAPI.extension", "Bundle-Version":"1.0.3", "Bundle-FileName":"SmartCar.Navigator.RESTAPI.extension_1.0.3.jar", "component-group":"smartcar"},
+		{"Bundle-SymbolicName":"SmartCar.Navigator.starter", "Bundle-Version":"1.0.1", "Bundle-FileName":"SmartCar.Navigator.starter_1.0.1.jar", "component-group":"smartcar"},
+		{"Bundle-SymbolicName":"SmartCar.comm.MQTT.starter", "Bundle-Version":"1.0.1", "Bundle-FileName":"SmartCar.comm.MQTT.starter_1.0.1.jar", "component-group":"smartcar"}
+	]
+}

@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:es.upv.pros.tatami.adaptation.componentsModel="http://es.upv.pros.tatami.adaptation.componentsModel" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_3L1CgMn5Eee_T-ripq6SkQ" type="ComponentsModel" name="SmartCarSAE.componentsmodel_diagram" measurementUnit="Pixel">
+  <children xmi:type="notation:Node" xmi:id="_2C61gMoAEee_T-ripq6SkQ" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_2C61hMoAEee_T-ripq6SkQ" type="5010"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_2C61hcoAEee_T-ripq6SkQ" type="5011"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_2C61hsoAEee_T-ripq6SkQ" type="7001"/>
+    <children xmi:type="notation:Node" xmi:id="_hnsckMoCEee_T-ripq6SkQ" type="3002">
+      <children xmi:type="notation:DecorationNode" xmi:id="_hnsclMoCEee_T-ripq6SkQ" type="5001">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_hnsclcoCEee_T-ripq6SkQ" y="5"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_hntDoMoCEee_T-ripq6SkQ" type="5002">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_hntDocoCEee_T-ripq6SkQ" y="5"/>
+      </children>
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_hnsckcoCEee_T-ripq6SkQ"/>
+      <styles xmi:type="notation:FontStyle" xmi:id="_hnscksoCEee_T-ripq6SkQ" fontName=".SF NS Text"/>
+      <element xmi:type="es.upv.pros.tatami.adaptation.componentsModel:ServiceSupply" href="SmartCarSAE.componentsmodel#ServiceSupplyImpl_5PgSN9"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hnsck8oCEee_T-ripq6SkQ"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_2C61gcoAEee_T-ripq6SkQ"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_2C61gsoAEee_T-ripq6SkQ" fontName=".SF NS Text"/>
+    <element xmi:type="es.upv.pros.tatami.adaptation.componentsModel:AdaptiveReadyComponent" href="SmartCarSAE.componentsmodel#AdaptiveReadyComponentImpl_96TrZf"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2C61g8oAEee_T-ripq6SkQ" x="68" y="-388" width="189" height="99"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_A2xnAM6eEeeoXpWi_QkG4A" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_A2zcMM6eEeeoXpWi_QkG4A" type="5010"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_A2zcMc6eEeeoXpWi_QkG4A" type="5011"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_A20DQM6eEeeoXpWi_QkG4A" type="7001"/>
+    <children xmi:type="notation:Node" xmi:id="_xYhT0M6eEeeoXpWi_QkG4A" type="3002">
+      <children xmi:type="notation:DecorationNode" xmi:id="_xYh64M6eEeeoXpWi_QkG4A" type="5001">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_xYh64c6eEeeoXpWi_QkG4A" y="5"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_xYh64s6eEeeoXpWi_QkG4A" type="5002">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_xYh6486eEeeoXpWi_QkG4A" y="5"/>
+      </children>
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_xYhT0c6eEeeoXpWi_QkG4A"/>
+      <styles xmi:type="notation:FontStyle" xmi:id="_xYhT0s6eEeeoXpWi_QkG4A" fontName=".SF NS Text"/>
+      <element xmi:type="es.upv.pros.tatami.adaptation.componentsModel:ServiceSupply" href="SmartCarSAE.componentsmodel#ServiceSupplyImpl_68J3uq"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xYhT086eEeeoXpWi_QkG4A"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_A2xnAc6eEeeoXpWi_QkG4A"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_A2xnAs6eEeeoXpWi_QkG4A" fontName=".SF NS Text"/>
+    <element xmi:type="es.upv.pros.tatami.adaptation.componentsModel:AdaptiveReadyComponent" href="SmartCarSAE.componentsmodel#AdaptiveReadyComponentImpl_3iFT8F"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_A2xnA86eEeeoXpWi_QkG4A" x="280" y="-392"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_5i2Q8M6eEeeoXpWi_QkG4A" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_5i2Q9M6eEeeoXpWi_QkG4A" type="5010"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_5i2Q9c6eEeeoXpWi_QkG4A" type="5011"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_5i2Q9s6eEeeoXpWi_QkG4A" type="7001"/>
+    <children xmi:type="notation:Node" xmi:id="_ucRvsM6fEeeoXpWi_QkG4A" type="3002">
+      <children xmi:type="notation:DecorationNode" xmi:id="_ucSWwM6fEeeoXpWi_QkG4A" type="5001">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_ucSWwc6fEeeoXpWi_QkG4A" y="5"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_ucSWws6fEeeoXpWi_QkG4A" type="5002">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_ucSWw86fEeeoXpWi_QkG4A" y="5"/>
+      </children>
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_ucRvsc6fEeeoXpWi_QkG4A"/>
+      <styles xmi:type="notation:FontStyle" xmi:id="_ucRvss6fEeeoXpWi_QkG4A" fontName=".SF NS Text"/>
+      <element xmi:type="es.upv.pros.tatami.adaptation.componentsModel:ServiceSupply" href="SmartCarSAE.componentsmodel#ServiceSupplyImpl_9XTN2d"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ucRvs86fEeeoXpWi_QkG4A"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_5i2Q8c6eEeeoXpWi_QkG4A"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_5i2Q8s6eEeeoXpWi_QkG4A" fontName=".SF NS Text"/>
+    <element xmi:type="es.upv.pros.tatami.adaptation.componentsModel:AdaptiveReadyComponent" href="SmartCarSAE.componentsmodel#AdaptiveReadyComponentImpl_44qyOj"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5i2Q886eEeeoXpWi_QkG4A" x="300" y="-208"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_1ZKCQM6fEeeoXpWi_QkG4A" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_1ZKCRM6fEeeoXpWi_QkG4A" type="5010"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_1ZKCRc6fEeeoXpWi_QkG4A" type="5011"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_1ZKCRs6fEeeoXpWi_QkG4A" type="7001"/>
+    <children xmi:type="notation:Node" xmi:id="_KUqy4M6gEeef9O4QYY01PA" type="3002">
+      <children xmi:type="notation:DecorationNode" xmi:id="_KUrZ8M6gEeef9O4QYY01PA" type="5001">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_KUrZ8c6gEeef9O4QYY01PA" y="5"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_KUsBAM6gEeef9O4QYY01PA" type="5002">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_KUsBAc6gEeef9O4QYY01PA" y="5"/>
+      </children>
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_KUqy4c6gEeef9O4QYY01PA"/>
+      <styles xmi:type="notation:FontStyle" xmi:id="_KUqy4s6gEeef9O4QYY01PA" fontName=".SF NS Text"/>
+      <element xmi:type="es.upv.pros.tatami.adaptation.componentsModel:ServiceSupply" href="SmartCarSAE.componentsmodel#ServiceSupplyImpl_9ehNGb"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KUqy486gEeef9O4QYY01PA"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_1ZKCQc6fEeeoXpWi_QkG4A"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_1ZKCQs6fEeeoXpWi_QkG4A" fontName=".SF NS Text"/>
+    <element xmi:type="es.upv.pros.tatami.adaptation.componentsModel:AdaptiveReadyComponent" href="SmartCarSAE.componentsmodel#AdaptiveReadyComponentImpl_3YG14J"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1ZKCQ86fEeeoXpWi_QkG4A" x="44" y="-208"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_Rxw2kM6gEeef9O4QYY01PA" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_Rxw2lM6gEeef9O4QYY01PA" type="5010"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_Rxw2lc6gEeef9O4QYY01PA" type="5011"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_RxxdoM6gEeef9O4QYY01PA" type="7001"/>
+    <children xmi:type="notation:Node" xmi:id="_OmmFoM6hEeeXBcGrXnq4ag" type="3002">
+      <children xmi:type="notation:DecorationNode" xmi:id="_OmnTwM6hEeeXBcGrXnq4ag" type="5001">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_OmnTwc6hEeeXBcGrXnq4ag" y="5"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_Omn60M6hEeeXBcGrXnq4ag" type="5002">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_Omn60c6hEeeXBcGrXnq4ag" y="5"/>
+      </children>
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_OmmFoc6hEeeXBcGrXnq4ag"/>
+      <styles xmi:type="notation:FontStyle" xmi:id="_OmmFos6hEeeXBcGrXnq4ag" fontName=".SF NS Text"/>
+      <element xmi:type="es.upv.pros.tatami.adaptation.componentsModel:ServiceSupply" href="SmartCarSAE.componentsmodel#ServiceSupplyImpl_7y1vCI"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OmmFo86hEeeXBcGrXnq4ag"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_Rxw2kc6gEeef9O4QYY01PA"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_Rxw2ks6gEeef9O4QYY01PA" fontName=".SF NS Text"/>
+    <element xmi:type="es.upv.pros.tatami.adaptation.componentsModel:AdaptiveReadyComponent" href="SmartCarSAE.componentsmodel#AdaptiveReadyComponentImpl_52Gvoc"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Rxw2k86gEeef9O4QYY01PA" x="620" y="-392"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_jGTZIM6jEeeb1-aB-f_IhA" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_jGUAMM6jEeeb1-aB-f_IhA" type="5010"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_jGUAMc6jEeeb1-aB-f_IhA" type="5011"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_jGUAMs6jEeeb1-aB-f_IhA" type="7001"/>
+    <children xmi:type="notation:Node" xmi:id="_gudLcM64EeetVsJMj-2QQQ" type="3002">
+      <children xmi:type="notation:DecorationNode" xmi:id="_gudygM64EeetVsJMj-2QQQ" type="5001">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_gudygc64EeetVsJMj-2QQQ" y="5"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_gudygs64EeetVsJMj-2QQQ" type="5002">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_gudyg864EeetVsJMj-2QQQ" y="5"/>
+      </children>
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_gudLcc64EeetVsJMj-2QQQ"/>
+      <styles xmi:type="notation:FontStyle" xmi:id="_gudLcs64EeetVsJMj-2QQQ" fontName=".SF NS Text"/>
+      <element xmi:type="es.upv.pros.tatami.adaptation.componentsModel:ServiceSupply" href="SmartCarSAE.componentsmodel#ServiceSupplyImpl_6JgQRK"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gudLc864EeetVsJMj-2QQQ"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_jGTZIc6jEeeb1-aB-f_IhA"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_jGTZIs6jEeeb1-aB-f_IhA" fontName=".SF NS Text"/>
+    <element xmi:type="es.upv.pros.tatami.adaptation.componentsModel:AdaptiveReadyComponent" href="SmartCarSAE.componentsmodel#AdaptiveReadyComponentImpl_2emYiD"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jGTZI86jEeeb1-aB-f_IhA" x="628" y="-212"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_pQdjYM6lEeedI8Zl97kdKg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_pQexgM6lEeedI8Zl97kdKg" type="5010"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_pQexgc6lEeedI8Zl97kdKg" type="5011"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_pQexgs6lEeedI8Zl97kdKg" type="7001"/>
+    <children xmi:type="notation:Node" xmi:id="_jihV0M95EeeBxsVRkZ4Dxg" type="3003">
+      <children xmi:type="notation:DecorationNode" xmi:id="_jih84M95EeeBxsVRkZ4Dxg" type="5003">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_jih84c95EeeBxsVRkZ4Dxg" y="5"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_jih84s95EeeBxsVRkZ4Dxg" type="5004">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_jih84895EeeBxsVRkZ4Dxg" y="5"/>
+      </children>
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_jihV0c95EeeBxsVRkZ4Dxg"/>
+      <styles xmi:type="notation:FontStyle" xmi:id="_jihV0s95EeeBxsVRkZ4Dxg" fontName=".SF NS Text"/>
+      <element xmi:type="es.upv.pros.tatami.adaptation.componentsModel:ServiceRequirement" href="SmartCarSAE.componentsmodel#ServiceRequirementImpl_6VBAx7"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jihV0895EeeBxsVRkZ4Dxg" x="44" y="145"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_Bpja0M96Eee4IavGLeiVvw" type="3003">
+      <children xmi:type="notation:DecorationNode" xmi:id="_Bpko8M96Eee4IavGLeiVvw" type="5003">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_BplQAM96Eee4IavGLeiVvw" y="5"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_BplQAc96Eee4IavGLeiVvw" type="5004">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_BplQAs96Eee4IavGLeiVvw" y="5"/>
+      </children>
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_Bpja0c96Eee4IavGLeiVvw"/>
+      <styles xmi:type="notation:FontStyle" xmi:id="_Bpja0s96Eee4IavGLeiVvw" fontName=".SF NS Text"/>
+      <element xmi:type="es.upv.pros.tatami.adaptation.componentsModel:ServiceRequirement" href="SmartCarSAE.componentsmodel#ServiceRequirementImpl_4UR2xE"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Bpja0896Eee4IavGLeiVvw"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_G5GB0M96Eee4IavGLeiVvw" type="3002">
+      <children xmi:type="notation:DecorationNode" xmi:id="_G5Go4M96Eee4IavGLeiVvw" type="5001">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_G5Go4c96Eee4IavGLeiVvw" y="5"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_G5Go4s96Eee4IavGLeiVvw" type="5002">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_G5Go4896Eee4IavGLeiVvw" y="5"/>
+      </children>
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_G5GB0c96Eee4IavGLeiVvw"/>
+      <styles xmi:type="notation:FontStyle" xmi:id="_G5GB0s96Eee4IavGLeiVvw" fontName=".SF NS Text"/>
+      <element xmi:type="es.upv.pros.tatami.adaptation.componentsModel:ServiceSupply" href="SmartCarSAE.componentsmodel#ServiceSupplyImpl_50yoiR"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_G5GB0896Eee4IavGLeiVvw" x="84" y="-31"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_9bODwEYKEeiwaf4p03jBMw" type="3004">
+      <children xmi:type="notation:DecorationNode" xmi:id="_9bODxEYKEeiwaf4p03jBMw" type="5005"/>
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_9bODwUYKEeiwaf4p03jBMw"/>
+      <styles xmi:type="notation:FontStyle" xmi:id="_9bODwkYKEeiwaf4p03jBMw" fontName=".AppleSystemUIFont"/>
+      <element xmi:type="es.upv.pros.tatami.adaptation.componentsModel:Parameter" href="SmartCarSAE.componentsmodel#ParameterImpl_7lyi5U"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9bODw0YKEeiwaf4p03jBMw" x="219" y="16"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_pQdjYc6lEeedI8Zl97kdKg"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_pQeKcM6lEeedI8Zl97kdKg" fontName=".SF NS Text"/>
+    <element xmi:type="es.upv.pros.tatami.adaptation.componentsModel:AdaptiveReadyComponent" href="SmartCarSAE.componentsmodel#AdaptiveReadyComponentImpl_70iTM7"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_pQeKcc6lEeedI8Zl97kdKg" x="1136" y="-384"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_9HpeUM6nEee-7uc8GZWxrw" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_9HpeVM6nEee-7uc8GZWxrw" type="5010"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_9HqFYM6nEee-7uc8GZWxrw" type="5011"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_9HqFYc6nEee-7uc8GZWxrw" type="7001"/>
+    <children xmi:type="notation:Node" xmi:id="_QefOcEYNEeiwaf4p03jBMw" type="3002">
+      <children xmi:type="notation:DecorationNode" xmi:id="_QefOdEYNEeiwaf4p03jBMw" type="5001">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_QefOdUYNEeiwaf4p03jBMw" y="5"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_QefOdkYNEeiwaf4p03jBMw" type="5002">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_QefOd0YNEeiwaf4p03jBMw" y="5"/>
+      </children>
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_QefOcUYNEeiwaf4p03jBMw"/>
+      <styles xmi:type="notation:FontStyle" xmi:id="_QefOckYNEeiwaf4p03jBMw" fontName=".AppleSystemUIFont"/>
+      <element xmi:type="es.upv.pros.tatami.adaptation.componentsModel:ServiceSupply" href="SmartCarSAE.componentsmodel#ServiceSupplyImpl_4aesF9"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_QefOc0YNEeiwaf4p03jBMw"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_bpa10EYNEeiwaf4p03jBMw" type="3004">
+      <children xmi:type="notation:DecorationNode" xmi:id="_bpa11EYNEeiwaf4p03jBMw" type="5005"/>
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_bpa10UYNEeiwaf4p03jBMw"/>
+      <styles xmi:type="notation:FontStyle" xmi:id="_bpa10kYNEeiwaf4p03jBMw" fontName=".AppleSystemUIFont"/>
+      <element xmi:type="es.upv.pros.tatami.adaptation.componentsModel:Parameter" href="SmartCarSAE.componentsmodel#ParameterImpl_9w7IpE"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bpa100YNEeiwaf4p03jBMw" x="60" y="149"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_9HpeUc6nEee-7uc8GZWxrw"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_9HpeUs6nEee-7uc8GZWxrw" fontName=".SF NS Text"/>
+    <element xmi:type="es.upv.pros.tatami.adaptation.componentsModel:AdaptiveReadyComponent" href="SmartCarSAE.componentsmodel#AdaptiveReadyComponentImpl_83ddFb"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9HpeU86nEee-7uc8GZWxrw" x="1316" y="-120"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_EHjPsM6oEee-7uc8GZWxrw" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_EHj2wM6oEee-7uc8GZWxrw" type="5010"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_EHj2wc6oEee-7uc8GZWxrw" type="5011"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_EHj2ws6oEee-7uc8GZWxrw" type="7001"/>
+    <children xmi:type="notation:Node" xmi:id="_OUxv8EYNEeiwaf4p03jBMw" type="3002">
+      <children xmi:type="notation:DecorationNode" xmi:id="_OUxv9EYNEeiwaf4p03jBMw" type="5001">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_OUxv9UYNEeiwaf4p03jBMw" y="5"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_OUxv9kYNEeiwaf4p03jBMw" type="5002">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_OUxv90YNEeiwaf4p03jBMw" y="5"/>
+      </children>
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_OUxv8UYNEeiwaf4p03jBMw"/>
+      <styles xmi:type="notation:FontStyle" xmi:id="_OUxv8kYNEeiwaf4p03jBMw" fontName=".AppleSystemUIFont"/>
+      <element xmi:type="es.upv.pros.tatami.adaptation.componentsModel:ServiceSupply" href="SmartCarSAE.componentsmodel#ServiceSupplyImpl_7kDG1D"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OUxv80YNEeiwaf4p03jBMw"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_XDyHcEYNEeiwaf4p03jBMw" type="3004">
+      <children xmi:type="notation:DecorationNode" xmi:id="_XDyugEYNEeiwaf4p03jBMw" type="5005"/>
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_XDyHcUYNEeiwaf4p03jBMw"/>
+      <styles xmi:type="notation:FontStyle" xmi:id="_XDyHckYNEeiwaf4p03jBMw" fontName=".AppleSystemUIFont"/>
+      <element xmi:type="es.upv.pros.tatami.adaptation.componentsModel:Parameter" href="SmartCarSAE.componentsmodel#ParameterImpl_45qnHm"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XDyHc0YNEeiwaf4p03jBMw" x="80" y="149"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_EHjPsc6oEee-7uc8GZWxrw"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_EHjPss6oEee-7uc8GZWxrw" fontName=".SF NS Text"/>
+    <element xmi:type="es.upv.pros.tatami.adaptation.componentsModel:AdaptiveReadyComponent" href="SmartCarSAE.componentsmodel#AdaptiveReadyComponentImpl_99XzOR"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EHjPs86oEee-7uc8GZWxrw" x="1048" y="-112"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_IO11MM6oEee-7uc8GZWxrw" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_IO2cQM6oEee-7uc8GZWxrw" type="5010"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_IO2cQc6oEee-7uc8GZWxrw" type="5011"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_IO2cQs6oEee-7uc8GZWxrw" type="7001"/>
+    <children xmi:type="notation:Node" xmi:id="_SHvrQEYNEeiwaf4p03jBMw" type="3002">
+      <children xmi:type="notation:DecorationNode" xmi:id="_SHwSUUYNEeiwaf4p03jBMw" type="5001">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_SHwSUkYNEeiwaf4p03jBMw" y="5"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_SHwSU0YNEeiwaf4p03jBMw" type="5002">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_SHwSVEYNEeiwaf4p03jBMw" y="5"/>
+      </children>
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_SHvrQUYNEeiwaf4p03jBMw"/>
+      <styles xmi:type="notation:FontStyle" xmi:id="_SHvrQkYNEeiwaf4p03jBMw" fontName=".AppleSystemUIFont"/>
+      <element xmi:type="es.upv.pros.tatami.adaptation.componentsModel:ServiceSupply" href="SmartCarSAE.componentsmodel#ServiceSupplyImpl_1RH5kf"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_SHwSUEYNEeiwaf4p03jBMw"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_MiIJsEbVEei0irHmFII6ww" type="3004">
+      <children xmi:type="notation:DecorationNode" xmi:id="_Mic50EbVEei0irHmFII6ww" type="5005"/>
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_MiIJsUbVEei0irHmFII6ww"/>
+      <styles xmi:type="notation:FontStyle" xmi:id="_MiIJskbVEei0irHmFII6ww" fontName=".AppleSystemUIFont"/>
+      <element xmi:type="es.upv.pros.tatami.adaptation.componentsModel:Parameter" href="SmartCarSAE.componentsmodel#ParameterImpl_6hsqSc"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MiIJs0bVEei0irHmFII6ww" x="60" y="149"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_IO11Mc6oEee-7uc8GZWxrw"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_IO11Ms6oEee-7uc8GZWxrw" fontName=".SF NS Text"/>
+    <element xmi:type="es.upv.pros.tatami.adaptation.componentsModel:AdaptiveReadyComponent" href="SmartCarSAE.componentsmodel#AdaptiveReadyComponentImpl_73EA8n"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_IO11M86oEee-7uc8GZWxrw" x="1588" y="-120"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_s9pBkEYLEeiwaf4p03jBMw" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_s9pooEYLEeiwaf4p03jBMw" type="5010"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_s9pooUYLEeiwaf4p03jBMw" type="5011"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_s9pookYLEeiwaf4p03jBMw" type="7001"/>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_s9pBkUYLEeiwaf4p03jBMw"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_s9pBkkYLEeiwaf4p03jBMw" fontName=".AppleSystemUIFont"/>
+    <element xmi:type="es.upv.pros.tatami.adaptation.componentsModel:AdaptiveReadyComponent" href="SmartCarSAE.componentsmodel#AdaptiveReadyComponentImpl_8Wtqpq"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_s9pBk0YLEeiwaf4p03jBMw" x="1232" y="-656"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_9g7NsEYLEeiwaf4p03jBMw" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_9g70wEYLEeiwaf4p03jBMw" type="5010"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_9g70wUYLEeiwaf4p03jBMw" type="5011"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_9g70wkYLEeiwaf4p03jBMw" type="7001"/>
+    <children xmi:type="notation:Node" xmi:id="_rH5ZIEbVEei0irHmFII6ww" type="3004">
+      <children xmi:type="notation:DecorationNode" xmi:id="_rH6AMEbVEei0irHmFII6ww" type="5005"/>
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_rH5ZIUbVEei0irHmFII6ww"/>
+      <styles xmi:type="notation:FontStyle" xmi:id="_rH5ZIkbVEei0irHmFII6ww" fontName=".AppleSystemUIFont"/>
+      <element xmi:type="es.upv.pros.tatami.adaptation.componentsModel:Parameter" href="SmartCarSAE.componentsmodel#ParameterImpl_7U2OKM"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_rH5ZI0bVEei0irHmFII6ww" x="32" y="149"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_9g7NsUYLEeiwaf4p03jBMw"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_9g7NskYLEeiwaf4p03jBMw" fontName=".AppleSystemUIFont"/>
+    <element xmi:type="es.upv.pros.tatami.adaptation.componentsModel:AdaptiveReadyComponent" href="SmartCarSAE.componentsmodel#AdaptiveReadyComponentImpl_4mkhNn"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9g7Ns0YLEeiwaf4p03jBMw" x="1552" y="-400"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_3L1pkMn5Eee_T-ripq6SkQ"/>
+  <element xmi:type="es.upv.pros.tatami.adaptation.componentsModel:ComponentsModel" href="SmartCarSAE.componentsmodel#/"/>
+</notation:Diagram>

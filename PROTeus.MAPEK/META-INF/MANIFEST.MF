@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: PROTeus.MAPEK
+Bundle-SymbolicName: PROTeus.MAPEK
+Bundle-Version: 1.0.0
+Bundle-Vendor: tatami@pros
+Export-Package: es.upv.pros.tatami.autonomic.adaptation.framework.systemAPI.componentConfigurator.interfaces,
+ es.upv.pros.tatami.autonomic.adaptation.framework.systemComponentsManager.exceptions,
+ es.upv.pros.tatami.autonomic.adaptation.framework.systemComponentsManager.interfaces
