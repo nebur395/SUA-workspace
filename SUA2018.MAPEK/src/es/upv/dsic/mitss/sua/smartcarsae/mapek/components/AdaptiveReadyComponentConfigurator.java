@@ -27,6 +27,7 @@ public abstract class AdaptiveReadyComponentConfigurator implements IAdaptiveRea
 	@Override
 	public IAdaptiveReadyComponentConfigurator start() {
 		this.properties.put("id", this.context.getBundle().getSymbolicName());
+		this.properties.put("prop", "sua");
 		this.reg = this.context.registerService(IAdaptiveReadyComponentConfigurator.class.getName(), this,
 				this.properties);
 		return this;
