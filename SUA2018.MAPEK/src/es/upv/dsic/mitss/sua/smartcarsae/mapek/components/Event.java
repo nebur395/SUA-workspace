@@ -1,23 +1,24 @@
 package es.upv.dsic.mitss.sua.smartcarsae.mapek.components;
 
+import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.EMonitorRT;
 import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.IEvent;
 
 public class Event implements IEvent {
 	
-	protected String RT = null;
+	protected EMonitorRT RT = null;
 	protected Object value  = null;
 	
-	public Event(String RT) {
+	public Event(EMonitorRT RT) {
 		this(RT, null);
 	}
 	
-	public Event(String RT, Object value) {
+	public Event(EMonitorRT RT, Object value) {
 		this.RT = RT;
 		this.value = value;
 	}
 
 	@Override
-	public String getRT() {
+	public EMonitorRT getRT() {
 		return this.RT;
 	}
 

@@ -10,6 +10,7 @@ public interface IAdaptiveReadyComponentConfigurator {
 	public IAdaptiveReadyComponentConfigurator bindService(String req, Object value);
 	public IAdaptiveReadyComponentConfigurator unbindServices(String req);
 	public IAdaptiveReadyComponentConfigurator unbindService(String req, Object value);
+	public String getId();
 
 	public Object getServiceSupply(String serviceSupply);
 	// public List<Object> getAllServicesSupply(String serviceSupply);
