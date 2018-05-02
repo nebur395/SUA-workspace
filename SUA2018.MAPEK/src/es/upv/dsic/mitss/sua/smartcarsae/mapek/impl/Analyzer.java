@@ -16,14 +16,23 @@ public class Analyzer implements IAnalyzer {
 	@Override
 	public void notifyEvent(IEvent event) {
 		switch(event.getRT()) {
-			case ApproachingCity: break;
-			case CollisionSensorFailure: break;
-			case DistanceSensorFailure: break;
-			case DriverAsleep: break;
-			case DriverAttentive: break;
-			case DriverDistracted: break;
-			case HighwayDetected: break;
-			case TrafficJamDetected: break;
+			case ApproachingCity: 
+				
+				break;
+			case CollisionSensorFailure: 
+				break;
+			case DistanceSensorFailure: 
+				break;
+			case DriverAsleep: 
+				break;
+			case DriverAttentive: 
+				break;
+			case DriverDistracted: 
+				break;
+			case HighwayDetected: 
+				break;
+			case TrafficJamDetected: 
+				break;
 		}
 	}
 	

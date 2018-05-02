@@ -71,7 +71,7 @@ public class MyCommandProvider {
 		}
 
 		IMonitor navigatorMonitor = (IMonitor) this.context.getService(refs[0]);
-		navigatorMonitor.notifyEvent(new Event(EMonitorRT.ApproachingCity.name()));
+		navigatorMonitor.notifyEvent(new Event(EMonitorRT.ApproachingCity));
 
 	}
 
