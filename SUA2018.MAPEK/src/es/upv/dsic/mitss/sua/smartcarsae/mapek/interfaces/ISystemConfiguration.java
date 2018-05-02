@@ -1,5 +1,9 @@
 package es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces;
 
-public interface ISystemConfiguration {
+import java.util.List;
 
+import es.upv.pros.tatami.autonomic.adaptation.framework.systemAPI.componentConfigurator.interfaces.IAdaptiveReadyComponentConfigurator;
+
+public interface ISystemConfiguration {
+	public List<IAdaptiveReadyComponentConfigurator> getAdaptiveReadyComponentList();
 }
