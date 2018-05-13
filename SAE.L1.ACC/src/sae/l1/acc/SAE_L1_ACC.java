@@ -25,6 +25,7 @@ public class SAE_L1_ACC implements IAutoPilot {
 		this.context = context;
 		this.properties = new Hashtable<String, Object>();
 		this.properties.put("id", id);
+		this.properties.put("level", 1);
 	}
 		
 	public void setSecurityDistance(int d) {
