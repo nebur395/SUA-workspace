@@ -15,7 +15,7 @@ public class AdaptationAction implements IAdaptationAction {
 	
 	@Override
 	public void execute() {
-		// TODO Auto-generated method stub
+		// TODO ANDRIY y JOAN, aqui teneis que implementar las acciones que va a ejecutar cada adaptation action
 		
 	}
 }
