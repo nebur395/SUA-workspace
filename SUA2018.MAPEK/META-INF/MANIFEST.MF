@@ -6,6 +6,12 @@ Bundle-Version: 1.0.0
 Bundle-Activator: sua2018.mapek.Activator
 Import-Package: es.upv.pros.tatami.autonomic.adaptation.framework.systemAPI.componentConfigurator.interfaces,
  es.upv.pros.tatami.autonomic.adaptation.framework.systemComponentsManager.interfaces,
- org.osgi.framework;version="1.3.0"
+ org.osgi.framework;version="1.3.0",
+ sae.l0.manualdriving,
+ sae.l1.acc,
+ sae.l3.ddtfallback,
+ sae.l3.highwaychauffer,
+ sae.l3.trafficjamchauffer,
+ smartcar.hil.drivernotifyingservice
 Export-Package: es.upv.dsic.mitss.sua.smartcarsae.mapek.components,
  es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces

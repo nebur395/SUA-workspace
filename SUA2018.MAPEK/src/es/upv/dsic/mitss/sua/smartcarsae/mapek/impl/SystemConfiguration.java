@@ -3,12 +3,11 @@ package es.upv.dsic.mitss.sua.smartcarsae.mapek.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import es.upv.dsic.mitss.sua.smartcarsae.mapek.components.AdaptiveReadyComponentConfigurator;
 import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.ISystemConfiguration;
 import es.upv.pros.tatami.autonomic.adaptation.framework.systemAPI.componentConfigurator.interfaces.IAdaptiveReadyComponentConfigurator;
 
 public class SystemConfiguration implements ISystemConfiguration {
-	private List<AdaptiveReadyComponentConfigurator> activeComponents;
+	private List<IAdaptiveReadyComponentConfigurator> activeComponents;
 	
 	public SystemConfiguration() {
 		activeComponents = new ArrayList<>();
@@ -18,5 +17,9 @@ public class SystemConfiguration implements ISystemConfiguration {
 	public List<IAdaptiveReadyComponentConfigurator> getAdaptiveReadyComponentList() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public void setAdaptiveReadyComponentList(List<IAdaptiveReadyComponentConfigurator> list) {
+		this.activeComponents = list;
 	}
 }

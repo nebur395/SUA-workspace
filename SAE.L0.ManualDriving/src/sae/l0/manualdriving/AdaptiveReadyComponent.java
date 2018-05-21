@@ -1,4 +1,4 @@
-package smartcar.hil.drivernotifyingservice;
+package sae.l0.manualdriving;
 
 import org.osgi.framework.BundleContext;
 
@@ -8,15 +8,14 @@ import es.upv.pros.tatami.autonomic.adaptation.framework.systemComponentsManager
 
 public class AdaptiveReadyComponent extends AdaptiveReadyComponentConfigurator {
 	
-	public static String SS_DriverNotifyingService = "DriverNotifyingService";
-	public static String PAR_TIMEOUT = "Timeout";
+	public static String SS_ManualDriving = "ManualDriving";
 	
 	
-	protected SmartCar_HiL_DriverNotifyingService acc = null;
+	protected SAE_L0_ManualDriving acc = null;
 	
 	public AdaptiveReadyComponent(BundleContext context) {
 		super(context);
-		this.acc = new SmartCar_HiL_DriverNotifyingService(context, this.getId());
+		this.acc = new SAE_L0_ManualDriving(context, this.getId());
 	}
 
 	@Override
@@ -35,8 +34,6 @@ public class AdaptiveReadyComponent extends AdaptiveReadyComponentConfigurator {
 
 	@Override
 	public IAdaptiveReadyComponentConfigurator setParameter(String parameter, Object value) {
-		if ( parameter.equalsIgnoreCase(PAR_TIMEOUT) )
-			this.acc.setTimeout((Integer)value);
 		return this;
 	}
 
@@ -60,7 +57,7 @@ public class AdaptiveReadyComponent extends AdaptiveReadyComponentConfigurator {
 
 	@Override
 	public Object getServiceSupply(String serviceSupply) {
-		if ( serviceSupply.equalsIgnoreCase(SS_DriverNotifyingService) )
+		if ( serviceSupply.equalsIgnoreCase(SS_ManualDriving) )
 			return this.acc;
 		return null;
 	}

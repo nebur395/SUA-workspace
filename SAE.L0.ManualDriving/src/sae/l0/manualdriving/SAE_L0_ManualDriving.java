@@ -1,4 +1,4 @@
-package smartcar.hil.drivernotifyingservice;
+package sae.l0.manualdriving;
 
 import java.util.Dictionary;
 import java.util.Hashtable;
@@ -6,31 +6,25 @@ import java.util.Hashtable;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceRegistration;
 
-import es.upv.pros.iot.smartcar.services.interfaces.IDriverNotifyingService;
+import es.upv.pros.iot.smartcar.services.interfaces.IManualDriving;
 
-public class SmartCar_HiL_DriverNotifyingService implements IDriverNotifyingService {
-	
-	protected int timeout = 50; // s
+public class SAE_L0_ManualDriving implements IManualDriving {
 	
 	protected BundleContext context = null;
 	protected ServiceRegistration reg = null;
 	protected Dictionary<String, Object> properties = null;
 		
 	
-	public SmartCar_HiL_DriverNotifyingService(BundleContext context, String id) {
+	public SAE_L0_ManualDriving(BundleContext context, String id) {
 		this.context = context;
 		this.properties = new Hashtable<String, Object>();
 		this.properties.put("id", id);
-		this.properties.put("level", 1);
+		this.properties.put("level", 0);
 	}
 	
-	public void setTimeout(int seconds) {
-		this.timeout = seconds;
-	}
-	
-	public IDriverNotifyingService start() {
+	public IManualDriving start() {
 		
-		this.reg = this.context.registerService(IDriverNotifyingService.class, this, this.properties);
+		this.reg = this.context.registerService(IManualDriving.class, this, this.properties);
 		
 		// La magia empieza. Se recomienda crear un worker (Thread o similar) y que empiece
 		//   a simular movimiento ACC.
@@ -39,12 +33,11 @@ public class SmartCar_HiL_DriverNotifyingService implements IDriverNotifyingServ
 		return this;
 	}
 	
-	public IDriverNotifyingService stop() {
+	public IManualDriving stop() {
 		if ( this.reg != null )
 			this.reg.unregister();
 		return this;
 	}
 
 }
-
 
