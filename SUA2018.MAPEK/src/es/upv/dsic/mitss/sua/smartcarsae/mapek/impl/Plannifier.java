@@ -68,7 +68,6 @@ public class Plannifier implements IPlannifier {
 		}
 		
 		IAdaptationPlan newAdaptationPlan = new AdaptationPlan(newAdaptationActionsList);
-		this.knowledge.setCurrentAdaptionPlan(newAdaptationPlan);
 		this.executor.execute(newAdaptationPlan);
 	}
 	

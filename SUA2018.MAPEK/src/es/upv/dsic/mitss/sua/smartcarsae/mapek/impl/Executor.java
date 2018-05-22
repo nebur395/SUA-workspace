@@ -28,6 +28,7 @@ public class Executor implements IExecutor {
 		// TODO Auto-generated method stub
 		ServiceReference<?>[] refs = null;
 		refs = this.context.getAllServiceReferences(IAdaptiveReadyComponentConfigurator.class.getName(), "");
+//		this.knowledge.getCurrentSystemConfiguration().getAdaptiveReadyComponentList().clear();
 		for (IAdaptationAction n : plan.getActions()) {
 			for (ServiceReference<?> a : refs) {
 				IAdaptiveReadyComponentConfigurator adaptiveReady = (IAdaptiveReadyComponentConfigurator) this.context
@@ -40,8 +41,16 @@ public class Executor implements IExecutor {
 					}
 				}
 			}
+//			this.knowledge.getCurrentSystemConfiguration().getAdaptiveReadyComponentList().add(n.getCurrentComponent());
 		}
-
+		this.knowledge.setCurrentAdaptionPlan(plan);
 	}
 
 }
+
+//Hemos supuesto que (adaptiveReady.deploy() y adaptiveReady.undeploy) ya actualizan el systemConfiguration que le pasamos por argumento.
+//No vemos conveniente remplazar la antigua por la actua, de todas manera hemos valorado esta opcion:
+
+// this.knowledge.getCurrentSystemConfiguration().getAdaptiveReadyComponentList().clear();
+// y luego
+// this.knowledge.getCurrentSystemConfiguration().getAdaptiveReadyComponentList().add(n.getCurrentComponent()); 

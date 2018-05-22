@@ -11,11 +11,12 @@ import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.IAnalyzer;
 import java.util.ArrayList;
 import java.util.List;
 
+import es.upv.dsic.mitss.sua.smartcarsae.mapek.impl.monitores.MonitorAbstract;
 import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.EMonitorRT;
 import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.IAdaptationAction;
 import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.IAdaptationPlan;
 
-public class Monitor implements IMonitor {
+public class Monitor extends MonitorAbstract implements IMonitor {
 
 	Analyzer analyzer;
 	IKnowledge knowledge;
@@ -23,7 +24,7 @@ public class Monitor implements IMonitor {
 
 	@Override
 	public void notifyEvent(IEvent event) {
-		// TODO Auto-generated method stub
+		//Al final no se ha realizado la implementación del Patron de diseño Template.
 		List<IAdaptationAction> currentActions = this.knowledge.getCurrentAdaptionPlan().getActions();
 		List<String> deployedComponents = new ArrayList<String>();
 		
@@ -89,7 +90,7 @@ public class Monitor implements IMonitor {
 			for (String item : deployedComponents) {
 				if ((item.equals("SAE.L3.HighwayChauffer") || item.equals("SAE.L3.TrafficJamChauffer")) && !sleep) {
 					cond1 = true;
-				} else if ((item.equals("SAE.L3.HighwayChauffer") || item.equals("SAE.L3.TrafficJamChauffer")) && sleep) {
+				} else if ((item.equals("SAE.L3.HighwayChauffer") || item .equals("SAE.L3.TrafficJamChauffer")) && sleep) {
 					cond2 = true;
 				} else if (item.contains("SAE.L1")) {
 					cond3 = true;
