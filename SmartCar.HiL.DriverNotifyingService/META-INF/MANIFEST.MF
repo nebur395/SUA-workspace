@@ -4,4 +4,9 @@ Bundle-Name: SmartCar.HiL.DriverNotifyingService
 Bundle-SymbolicName: SmartCar.HiL.DriverNotifyingService
 Bundle-Version: 1.0.0
 Bundle-Activator: smartcar.hil.drivernotifyingservice.Activator
-Import-Package: org.osgi.framework;version="1.3.0"
+Import-Package: es.upv.dsic.mitss.sua.smartcarsae.mapek.components,
+ es.upv.pros.iot.smartcar.services.interfaces,
+ es.upv.pros.tatami.autonomic.adaptation.framework.systemAPI.componentConfigurator.interfaces,
+ es.upv.pros.tatami.autonomic.adaptation.framework.systemComponentsManager.interfaces,
+ org.osgi.framework;version="1.3.0"
+Export-Package: smartcar.hil.drivernotifyingservice
