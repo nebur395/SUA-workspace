@@ -8,9 +8,12 @@ import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.ISystemConfiguration;
 import es.upv.pros.tatami.autonomic.adaptation.framework.systemAPI.componentConfigurator.interfaces.IAdaptiveReadyComponentConfigurator;
 import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.IAnalyzer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.EMonitorRT;
+import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.IAdaptationAction;
+import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.IAdaptationPlan;
 
 public class Monitor implements IMonitor {
 
@@ -21,13 +24,19 @@ public class Monitor implements IMonitor {
 	@Override
 	public void notifyEvent(IEvent event) {
 		// TODO Auto-generated method stub
-		List<IAdaptiveReadyComponentConfigurator> currentActiveComponents = this.knowledge
-				.getCurrentSystemConfiguration().getAdaptiveReadyComponentList();
+		List<IAdaptationAction> currentActions = this.knowledge.getCurrentAdaptionPlan().getActions();
+		List<String> deployedComponents = new ArrayList<String>();
+		
+		for (IAdaptationAction cac : currentActions) {
+			if (cac.getCurrentAction() == EAdaptationAction.deploy)
+				deployedComponents.add(cac.getCurrentComponent().getId());
+		}
+		
 
 		if (event.getRT().equals(EMonitorRT.DriverAsleep) || event.getRT().equals(EMonitorRT.DriverDistracted)) {
 			boolean cond1 = false;
-			for (IAdaptiveReadyComponentConfigurator item : currentActiveComponents) {
-				if (item.getId().contains("SAE.L3"))
+			for (String item : deployedComponents) {
+				if (item.contains("SAE.L3"))
 					cond1 = true;
 			}
 			if (cond1)
@@ -37,11 +46,11 @@ public class Monitor implements IMonitor {
 		} else if (event.getRT().equals(EMonitorRT.DriverAttentive)) {
 			boolean cond1 = false;
 			boolean cond2 = false;
-			for (IAdaptiveReadyComponentConfigurator item : currentActiveComponents) {
-				if (item.getId().equals("SAE.L3.DDTFallback")) {
+			for (String item : deployedComponents) {
+				if (item.equals("SAE.L3.DDTFallback")) {
 					cond1 = true;
 				}
-				if (item.getId().equals("SmartCar.HiL.DriverNotifyingService")) {
+				if (item.equals("SmartCar.HiL.DriverNotifyingService")) {
 					cond2 = true;
 				}
 			}
@@ -54,8 +63,8 @@ public class Monitor implements IMonitor {
 
 		else if (event.getRT().equals(EMonitorRT.ApproachingCity)) {
 			boolean cond1 = false;
-			for (IAdaptiveReadyComponentConfigurator item : currentActiveComponents) {
-				if (item.getId().contains("SAE.L3")) {
+			for (String item : deployedComponents) {
+				if (item.contains("SAE.L3")) {
 					cond1 = true;
 				}
 			}
@@ -64,8 +73,8 @@ public class Monitor implements IMonitor {
 
 		} else if (event.getRT().equals(EMonitorRT.TrafficJamDetected)) {
 			boolean cond1 = false;
-			for (IAdaptiveReadyComponentConfigurator item : currentActiveComponents) {
-				if (item.getId().equals("SAE.L3.HighwayChauffer")) {
+			for (String item : deployedComponents) {
+				if (item.equals("SAE.L3.HighwayChauffer")) {
 					cond1 = true;
 				}
 			}
@@ -77,12 +86,12 @@ public class Monitor implements IMonitor {
 			boolean cond2 = false;
 			boolean cond3 = false;
 
-			for (IAdaptiveReadyComponentConfigurator item : currentActiveComponents) {
-				if ((item.getId().equals("SAE.L3.HighwayChauffer") || item.getId().equals("SAE.L3.TrafficJamChauffer")) &&!sleep) {
+			for (String item : deployedComponents) {
+				if ((item.equals("SAE.L3.HighwayChauffer") || item.equals("SAE.L3.TrafficJamChauffer")) && !sleep) {
 					cond1 = true;
-				} else if ((item.getId().equals("SAE.L3.HighwayChauffer") || item.getId().equals("SAE.L3.TrafficJamChauffer")) && sleep) {
+				} else if ((item.equals("SAE.L3.HighwayChauffer") || item.equals("SAE.L3.TrafficJamChauffer")) && sleep) {
 					cond2 = true;
-				} else if (item.getId().contains("SAE.L1")) {
+				} else if (item.contains("SAE.L1")) {
 					cond3 = true;
 				}
 			}
@@ -90,8 +99,8 @@ public class Monitor implements IMonitor {
 				this.analyzer.notifyEvent(event);
 		}else if (event.getRT().equals(EMonitorRT.HighwayDetected)) {
 			boolean cond1 = false;
-			for (IAdaptiveReadyComponentConfigurator item : currentActiveComponents) {
-				if (item.getId().equals("SAE.L3.TrafficJamChauffer")) {
+			for (String item : deployedComponents) {
+				if (item.equals("SAE.L3.TrafficJamChauffer")) {
 					cond1 = true;
 				}
 			}

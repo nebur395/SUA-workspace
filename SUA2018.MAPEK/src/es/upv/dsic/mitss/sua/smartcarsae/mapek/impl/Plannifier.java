@@ -2,6 +2,10 @@ package es.upv.dsic.mitss.sua.smartcarsae.mapek.impl;
 
 import java.util.LinkedList;
 import java.util.List;
+
+import org.osgi.framework.BundleException;
+import org.osgi.framework.InvalidSyntaxException;
+
 import es.upv.pros.tatami.autonomic.adaptation.framework.systemAPI.componentConfigurator.interfaces.IAdaptiveReadyComponentConfigurator;
 import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.IPlannifier;
 import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.IKnowledge;
@@ -16,7 +20,7 @@ public class Plannifier implements IPlannifier {
 	private IExecutor executor;
 	
 	@Override
-	public void plan(ISystemConfiguration theSystemConfiguration) {
+	public void plan(ISystemConfiguration theSystemConfiguration) throws BundleException, InvalidSyntaxException {
 		List<IAdaptiveReadyComponentConfigurator> newActiveComponents = theSystemConfiguration.getAdaptiveReadyComponentList();
 		List<IAdaptiveReadyComponentConfigurator> currentActiveComponents = this.knowledge.getCurrentSystemConfiguration().getAdaptiveReadyComponentList();
 		List<IAdaptationAction> newAdaptationActionsList = new LinkedList<IAdaptationAction>();
@@ -64,6 +68,7 @@ public class Plannifier implements IPlannifier {
 		}
 		
 		IAdaptationPlan newAdaptationPlan = new AdaptationPlan(newAdaptationActionsList);
+		this.knowledge.setCurrentAdaptionPlan(newAdaptationPlan);
 		this.executor.execute(newAdaptationPlan);
 	}
 	

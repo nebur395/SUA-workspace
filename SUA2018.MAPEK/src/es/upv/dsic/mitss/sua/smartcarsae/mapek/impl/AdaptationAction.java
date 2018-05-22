@@ -6,6 +6,22 @@ import es.upv.pros.tatami.autonomic.adaptation.framework.systemAPI.componentConf
 public class AdaptationAction implements IAdaptationAction {
 
 	private EAdaptationAction currentAction;
+	public EAdaptationAction getCurrentAction() {
+		return currentAction;
+	}
+
+	public void setCurrentAction(EAdaptationAction currentAction) {
+		this.currentAction = currentAction;
+	}
+
+	public IAdaptiveReadyComponentConfigurator getCurrentComponent() {
+		return currentComponent;
+	}
+
+	public void setCurrentComponent(IAdaptiveReadyComponentConfigurator currentComponent) {
+		this.currentComponent = currentComponent;
+	}
+
 	private IAdaptiveReadyComponentConfigurator currentComponent;
 	
 	public AdaptationAction (IAdaptiveReadyComponentConfigurator component, EAdaptationAction action) {

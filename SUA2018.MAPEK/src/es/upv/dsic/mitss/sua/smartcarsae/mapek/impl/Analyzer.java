@@ -51,7 +51,7 @@ public class Analyzer implements IAnalyzer {
 						throw new Exception(e);
 					}
 					if(level == 3) {
-						servicesList.add(new sae.l3..ddtfallback.AdaptiveReadyComponent(context).setParameter("ActivationDistance", 500));
+						servicesList.add(new sae.l3.ddtfallback.AdaptiveReadyComponent(context).setParameter("ActivationDistance", 500));
 						servicesList.add(new smartcar.hil.drivernotifyingservice.AdaptiveReadyComponent(context).setParameter("Timeout", 10));
 					} else {
 						throw new Exception("No changes required.");
