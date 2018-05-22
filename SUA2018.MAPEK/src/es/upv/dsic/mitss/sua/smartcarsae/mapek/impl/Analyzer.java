@@ -51,7 +51,7 @@ public class Analyzer implements IAnalyzer {
 						throw new Exception(e);
 					}
 					if(level == 3) {
-						servicesList.add(new sae.l3.ddtfallback.AdaptiveReadyComponent(context).setParameter("ActivationDistance", 500));
+						servicesList.add(new sae.l3..ddtfallback.AdaptiveReadyComponent(context).setParameter("ActivationDistance", 500));
 						servicesList.add(new smartcar.hil.drivernotifyingservice.AdaptiveReadyComponent(context).setParameter("Timeout", 10));
 					} else {
 						throw new Exception("No changes required.");
@@ -66,7 +66,7 @@ public class Analyzer implements IAnalyzer {
 						try {
 							for (ServiceReference<?> ref : refs) {
 								IAdaptiveReadyComponentConfigurator arcc = (IAdaptiveReadyComponentConfigurator) this.context.getService(ref);
-								if(arcc.getId().contentEquals("SAE.L3.TrafficJamChauffer") || arcc.getId().contentEquals("SAE.L3.TrafficJamChauffer")) {
+								if(arcc.getId().contentEquals("SAE.L3.HighwayChauffer") || arcc.getId().contentEquals("SAE.L3.TrafficJamChauffer")) {
 									level = 3;
 									break;
 								} else if(arcc.getId().contentEquals("SAE.L1.ACC"))
