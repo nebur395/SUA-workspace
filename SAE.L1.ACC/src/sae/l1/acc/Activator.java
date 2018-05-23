@@ -1,7 +1,12 @@
 package sae.l1.acc;
 
+import java.util.Collection;
+
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceReference;
+
+import es.upv.pros.tatami.autonomic.adaptation.framework.systemAPI.componentConfigurator.interfaces.IAdaptiveReadyComponentConfigurator;
 
 public class Activator implements BundleActivator {
 
@@ -18,8 +23,15 @@ public class Activator implements BundleActivator {
 	 */
 	public void start(BundleContext bundleContext) throws Exception {
 		Activator.context = bundleContext;
-		arc = new AdaptiveReadyComponent(bundleContext);
-		arc.start();
+		
+		try {
+			IAdaptiveReadyComponentConfigurator arc_SAE_L1_ACC = this.getARC("SAE.L1.ACC");
+			if (arc_SAE_L1_ACC != null) {
+				arc_SAE_L1_ACC.deploy(null);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/*
@@ -27,11 +39,16 @@ public class Activator implements BundleActivator {
 	 * @see org.osgi.framework.BundleActivator#stop(org.osgi.framework.BundleContext)
 	 */
 	public void stop(BundleContext bundleContext) throws Exception {
-		if ( this.arc != null ) {
-			this.arc.stop();
-			this.arc = null;
-		}
 		Activator.context = null;
 	}
-
+	
+	protected IAdaptiveReadyComponentConfigurator getARC(String id) {
+		Collection<ServiceReference<IAdaptiveReadyComponentConfigurator>> refs = null;
+		try {
+			refs = this.context.getServiceReferences(IAdaptiveReadyComponentConfigurator.class, "(id=" + id + ")");
+			return (IAdaptiveReadyComponentConfigurator) this.context.getService(refs.iterator().next());
+		} catch (Exception e) {
+			return null;
+		}
+	}
 }
