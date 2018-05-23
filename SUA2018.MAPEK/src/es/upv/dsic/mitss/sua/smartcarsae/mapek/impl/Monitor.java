@@ -20,7 +20,11 @@ public class Monitor extends MonitorAbstract implements IMonitor {
 	@Override
 	public void notifyEvent(IEvent event) {
 		try {
-			//Al final no se ha realizado la implementación del Patron de diseño Template.
+			System.out.println("Notificado");
+		//Al final no se ha realizado la implementación del Patron de diseño Template.
+		if( this.knowledge.getCurrentAdaptionPlan() == null) {
+			this.analyzer.notifyEvent(event);
+		} else {
 			List<IAdaptationAction> currentActions = this.knowledge.getCurrentAdaptionPlan().getActions();
 			List<String> deployedComponents = new ArrayList<String>();
 			
@@ -105,6 +109,7 @@ public class Monitor extends MonitorAbstract implements IMonitor {
 					this.analyzer.notifyEvent(event);
 	
 			}
+		}
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

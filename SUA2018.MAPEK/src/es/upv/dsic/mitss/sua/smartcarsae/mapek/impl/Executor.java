@@ -23,24 +23,26 @@ public class Executor implements IExecutor {
 
 	@Override
 	public void execute(IAdaptationPlan plan) throws BundleException, InvalidSyntaxException {
+		System.out.println("Recibido por el ejecutor");
 		// TODO Auto-generated method stub
 		ServiceReference<?>[] refs = null;
-		refs = this.context.getAllServiceReferences(IAdaptiveReadyComponentConfigurator.class.getName(), "");
+		refs = this.context.getAllServiceReferences(IAdaptiveReadyComponentConfigurator.class.getName(), null);
 //		this.knowledge.getCurrentSystemConfiguration().getAdaptiveReadyComponentList().clear();
-		for (IAdaptationAction n : plan.getActions()) {
-			for (ServiceReference<?> a : refs) {
-				IAdaptiveReadyComponentConfigurator adaptiveReady = (IAdaptiveReadyComponentConfigurator) this.context
-						.getService(a);
-				if (adaptiveReady.getId().equals(n.getCurrentComponent().getId())) {
-					if (n.getCurrentAction() == EAdaptationAction.deploy) {
-						adaptiveReady.deploy((ISystemComponentsManager) this.knowledge.getCurrentSystemConfiguration());
-					} else if (n.getCurrentAction() == EAdaptationAction.undeploy) {
-						adaptiveReady.undeploy((ISystemComponentsManager) this.knowledge.getCurrentSystemConfiguration());
+		if(refs != null)
+			for (IAdaptationAction n : plan.getActions()) {
+				for (ServiceReference<?> a : refs) {
+					IAdaptiveReadyComponentConfigurator adaptiveReady = (IAdaptiveReadyComponentConfigurator) this.context
+							.getService(a);
+					if (adaptiveReady.getId().equals(n.getCurrentComponent().getId())) {
+						if (n.getCurrentAction() == EAdaptationAction.deploy) {
+							adaptiveReady.deploy((ISystemComponentsManager) this.knowledge.getCurrentSystemConfiguration());
+						} else if (n.getCurrentAction() == EAdaptationAction.undeploy) {
+							adaptiveReady.undeploy((ISystemComponentsManager) this.knowledge.getCurrentSystemConfiguration());
+						}
 					}
 				}
+	//			this.knowledge.getCurrentSystemConfiguration().getAdaptiveReadyComponentList().add(n.getCurrentComponent());
 			}
-//			this.knowledge.getCurrentSystemConfiguration().getAdaptiveReadyComponentList().add(n.getCurrentComponent());
-		}
 		this.knowledge.setCurrentAdaptionPlan(plan);
 	}
 	

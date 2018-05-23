@@ -1,9 +1,13 @@
 package sua2018.mapek;
 
+import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.Hashtable;
+import java.util.List;
 
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.InvalidSyntaxException;
+import org.osgi.framework.ServiceReference;
 import org.osgi.framework.ServiceRegistration;
 
 import es.upv.dsic.mitss.sua.smartcarsae.mapek.impl.Analyzer;
@@ -11,12 +15,14 @@ import es.upv.dsic.mitss.sua.smartcarsae.mapek.impl.Executor;
 import es.upv.dsic.mitss.sua.smartcarsae.mapek.impl.Knowledge;
 import es.upv.dsic.mitss.sua.smartcarsae.mapek.impl.Monitor;
 import es.upv.dsic.mitss.sua.smartcarsae.mapek.impl.Plannifier;
+import es.upv.dsic.mitss.sua.smartcarsae.mapek.impl.SystemConfiguration;
 import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.IAnalyzer;
 import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.IExecutor;
 import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.IKnowledge;
 import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.IMonitor;
 import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.IPlannifier;
 import es.upv.pros.iot.smartcar.services.interfaces.ILoop;
+import es.upv.pros.tatami.autonomic.adaptation.framework.systemAPI.componentConfigurator.interfaces.IAdaptiveReadyComponentConfigurator;
 
 public class SUA2018_MAPEK_Loop implements ILoop {
 	
@@ -51,6 +57,22 @@ public class SUA2018_MAPEK_Loop implements ILoop {
 	
 	public ILoop start() {
 		
+		List<IAdaptiveReadyComponentConfigurator> servicesList = new ArrayList<>();
+		try {
+			ServiceReference<?>[] refs = null;
+			refs = this.context.getAllServiceReferences(IAdaptiveReadyComponentConfigurator.class.getName(), null);
+			if(refs != null)
+				for (ServiceReference<?> ref : refs) {
+					IAdaptiveReadyComponentConfigurator arcc = (IAdaptiveReadyComponentConfigurator) this.context.getService(ref);
+					servicesList.add(arcc);
+				}
+			SystemConfiguration sysconf = new SystemConfiguration();
+			sysconf.setAdaptiveReadyComponentList(servicesList);
+			this.knowledge.setCurrentSystemConfiguration(sysconf);
+		} catch (InvalidSyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		this.reg = this.context.registerService(ILoop.class, this, this.properties);
 		Hashtable props = new Hashtable();
 		props.put("id", "NavigatorMonitor");

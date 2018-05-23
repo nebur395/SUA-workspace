@@ -6,13 +6,13 @@ import java.util.List;
 import org.osgi.framework.BundleException;
 import org.osgi.framework.InvalidSyntaxException;
 
-import es.upv.pros.tatami.autonomic.adaptation.framework.systemAPI.componentConfigurator.interfaces.IAdaptiveReadyComponentConfigurator;
-import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.IPlannifier;
-import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.IKnowledge;
 import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.IAdaptationAction;
 import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.IAdaptationPlan;
 import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.IExecutor;
+import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.IKnowledge;
+import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.IPlannifier;
 import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.ISystemConfiguration;
+import es.upv.pros.tatami.autonomic.adaptation.framework.systemAPI.componentConfigurator.interfaces.IAdaptiveReadyComponentConfigurator;
 
 public class Plannifier implements IPlannifier {
 
@@ -21,6 +21,7 @@ public class Plannifier implements IPlannifier {
 	
 	@Override
 	public void plan(ISystemConfiguration theSystemConfiguration) throws BundleException, InvalidSyntaxException {
+		System.out.println("Recibido por el planificador");
 		List<IAdaptiveReadyComponentConfigurator> newActiveComponents = theSystemConfiguration.getAdaptiveReadyComponentList();
 		List<IAdaptiveReadyComponentConfigurator> currentActiveComponents = this.knowledge.getCurrentSystemConfiguration().getAdaptiveReadyComponentList();
 		List<IAdaptationAction> newAdaptationActionsList = new LinkedList<IAdaptationAction>();
@@ -29,43 +30,45 @@ public class Plannifier implements IPlannifier {
 		 * First iteration: It checks which of the current components have to be undeployed since they are
 		 * not in the new system configuration.
 		 */
-		for (IAdaptiveReadyComponentConfigurator currentComponent: currentActiveComponents) {
-			boolean componentExists = false;
-			// Check if the current component is in the new configuration plan
-			for (IAdaptiveReadyComponentConfigurator newComponent: newActiveComponents) {
-				if (currentComponent.getId().equals(newComponent.getId())) {
-					componentExists = true;
-					//newComponent.
-					break;
+		if(currentActiveComponents != null)
+			for (IAdaptiveReadyComponentConfigurator currentComponent: currentActiveComponents) {
+				boolean componentExists = false;
+				// Check if the current component is in the new configuration plan
+				for (IAdaptiveReadyComponentConfigurator newComponent: newActiveComponents) {
+					if (currentComponent.getId().equals(newComponent.getId())) {
+						componentExists = true;
+						//newComponent.
+						break;
+					}
+				}
+				
+				if (!componentExists) {
+					IAdaptationAction newAdaptationAction = new AdaptationAction(currentComponent, EAdaptationAction.undeploy);
+					newAdaptationActionsList.add(newAdaptationAction);
 				}
 			}
-			
-			if (!componentExists) {
-				IAdaptationAction newAdaptationAction = new AdaptationAction(currentComponent, EAdaptationAction.undeploy);
-				newAdaptationActionsList.add(newAdaptationAction);
-			}
-		}
 		
 		/*
 		 * Second iteration: It checks which of the new components have to be deployed since they are
 		 * not in the current system configuration.
 		 */
-		for (IAdaptiveReadyComponentConfigurator newComponent: newActiveComponents) {
-			boolean componentDoesNotExist = true;
-			// Check if the new component is in the current configuration plan
-			for (IAdaptiveReadyComponentConfigurator currentComponent: currentActiveComponents) {
-				if (currentComponent.getId().equals(newComponent.getId())) {
-					componentDoesNotExist = false;
-					//newComponent.
-					break;
+		if(newActiveComponents != null)
+			for (IAdaptiveReadyComponentConfigurator newComponent: newActiveComponents) {
+				boolean componentDoesNotExist = true;
+				// Check if the new component is in the current configuration plan
+				for (IAdaptiveReadyComponentConfigurator currentComponent: currentActiveComponents) {
+					if (currentComponent.getId().equals(newComponent.getId())) {
+						componentDoesNotExist = false;
+						//newComponent.
+						break;
+					}
+				}
+				
+				if (componentDoesNotExist) {
+					IAdaptationAction newAdaptationAction = new AdaptationAction(newComponent, EAdaptationAction.deploy);
+					newAdaptationActionsList.add(newAdaptationAction);
 				}
 			}
-			
-			if (componentDoesNotExist) {
-				IAdaptationAction newAdaptationAction = new AdaptationAction(newComponent, EAdaptationAction.deploy);
-				newAdaptationActionsList.add(newAdaptationAction);
-			}
-		}
 		
 		IAdaptationPlan newAdaptationPlan = new AdaptationPlan(newAdaptationActionsList);
 		this.executor.execute(newAdaptationPlan);

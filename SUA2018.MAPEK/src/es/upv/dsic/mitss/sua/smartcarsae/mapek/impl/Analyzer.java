@@ -26,23 +26,25 @@ public class Analyzer implements IAnalyzer {
 
 	@Override
 	public void notifyEvent(IEvent event) {
+		System.out.println("Recibido por el analizador");
 		try {
 			List<IAdaptiveReadyComponentConfigurator> servicesList = this.knowledge.getCurrentSystemConfiguration().getAdaptiveReadyComponentList();
 			ServiceReference<?>[] refs = null;
 			refs = this.context.getAllServiceReferences(IAdaptiveReadyComponentConfigurator.class.getName(),
-					"");
+					null);
 			int level = 0;
 			switch (event.getRT()) {
 				case ApproachingCity:
 					try {						
 						try {
-							for (ServiceReference<?> ref : refs) {
-								IAdaptiveReadyComponentConfigurator arcc = (IAdaptiveReadyComponentConfigurator) this.context.getService(ref);
-								if(arcc.getId().contentEquals("SAE.L3.TrafficJamChauffer") || arcc.getId().contentEquals("SAE.L3.TrafficJamChauffer")) {
-									level = 3;
-									break;
+							if(refs != null)
+								for (ServiceReference<?> ref : refs) {
+									IAdaptiveReadyComponentConfigurator arcc = (IAdaptiveReadyComponentConfigurator) this.context.getService(ref);
+									if(arcc.getId().contentEquals("SAE.L3.TrafficJamChauffer") || arcc.getId().contentEquals("SAE.L3.TrafficJamChauffer")) {
+										level = 3;
+										break;
+									}
 								}
-							}
 						} catch (Exception e) {
 							throw new Exception(e);
 						}
@@ -53,8 +55,6 @@ public class Analyzer implements IAnalyzer {
 					if(level == 3) {
 						servicesList.add(new sae.l3.ddtfallback.AdaptiveReadyComponent(context).setParameter("ActivationDistance", 500));
 						servicesList.add(new smartcar.hil.drivernotifyingservice.AdaptiveReadyComponent(context).setParameter("Timeout", 10));
-					} else {
-						throw new Exception("No changes required.");
 					}
 					break;
 				case CollisionSensorFailure:
@@ -64,14 +64,15 @@ public class Analyzer implements IAnalyzer {
 	
 						
 						try {
-							for (ServiceReference<?> ref : refs) {
-								IAdaptiveReadyComponentConfigurator arcc = (IAdaptiveReadyComponentConfigurator) this.context.getService(ref);
-								if(arcc.getId().contentEquals("SAE.L3.HighwayChauffer") || arcc.getId().contentEquals("SAE.L3.TrafficJamChauffer")) {
-									level = 3;
-									break;
-								} else if(arcc.getId().contentEquals("SAE.L1.ACC"))
-									level = 1;
-							}
+							if(refs != null)
+								for (ServiceReference<?> ref : refs) {
+									IAdaptiveReadyComponentConfigurator arcc = (IAdaptiveReadyComponentConfigurator) this.context.getService(ref);
+									if(arcc.getId().contentEquals("SAE.L3.HighwayChauffer") || arcc.getId().contentEquals("SAE.L3.TrafficJamChauffer")) {
+										level = 3;
+										break;
+									} else if(arcc.getId().contentEquals("SAE.L1.ACC"))
+										level = 1;
+								}
 						} catch (Exception e) {
 							throw new Exception(e);
 						}
@@ -84,21 +85,20 @@ public class Analyzer implements IAnalyzer {
 					} else if(level == 1) {
 						servicesList.removeIf(service -> service.getId().contentEquals("SAE_L1_ACC"));
 						servicesList.add(new sae.l0.manualdriving.AdaptiveReadyComponent(context));
-					} else {
-						throw new Exception("No changes required.");
 					}
 					break;
 				case DriverAsleep:
 				case DriverDistracted:
 					try {						
 						try {
-							for (ServiceReference<?> ref : refs) {
-								IAdaptiveReadyComponentConfigurator arcc = (IAdaptiveReadyComponentConfigurator) this.context.getService(ref);
-								if(arcc.getId().contentEquals("SAE.L3.TrafficJamChauffer") || arcc.getId().contentEquals("SAE.L3.TrafficJamChauffer")) {
-									level = 3;
-									break;
+							if(refs != null)
+								for (ServiceReference<?> ref : refs) {
+									IAdaptiveReadyComponentConfigurator arcc = (IAdaptiveReadyComponentConfigurator) this.context.getService(ref);
+									if(arcc.getId().contentEquals("SAE.L3.TrafficJamChauffer") || arcc.getId().contentEquals("SAE.L3.TrafficJamChauffer")) {
+										level = 3;
+										break;
+									}
 								}
-							}
 						} catch (Exception e) {
 							throw new Exception(e);
 						}
@@ -108,23 +108,22 @@ public class Analyzer implements IAnalyzer {
 					}
 					if(level == 3) {
 						servicesList.add(new smartcar.hil.drivernotifyingservice.AdaptiveReadyComponent(context));
-					} else {
-						throw new Exception("No changes required.");
 					}
 					break;
 				case DriverAttentive:
 					try {						
 						try {
-							for (ServiceReference<?> ref : refs) {
-								IAdaptiveReadyComponentConfigurator arcc = (IAdaptiveReadyComponentConfigurator) this.context.getService(ref);
-								if(arcc.getId().contentEquals("SAE.L3.DDTFallback")) {
-									servicesList.removeIf(service -> service.getId().contentEquals("SAE.L3.DDTFallback"));
-									servicesList.add(new sae.l1.acc.AdaptiveReadyComponent(context));
+							if(refs != null)
+								for (ServiceReference<?> ref : refs) {
+									IAdaptiveReadyComponentConfigurator arcc = (IAdaptiveReadyComponentConfigurator) this.context.getService(ref);
+									if(arcc.getId().contentEquals("SAE.L3.DDTFallback")) {
+										servicesList.removeIf(service -> service.getId().contentEquals("SAE.L3.DDTFallback"));
+										servicesList.add(new sae.l1.acc.AdaptiveReadyComponent(context));
+									}
+									if(arcc.getId().contentEquals("SmartCar.HiL.DriverNotifyingService")) {
+										servicesList.removeIf(service -> service.getId().contentEquals("SmartCar.HiL.DriverNotifyingService"));
+									}
 								}
-								if(arcc.getId().contentEquals("SmartCar.HiL.DriverNotifyingService")) {
-									servicesList.removeIf(service -> service.getId().contentEquals("SmartCar.HiL.DriverNotifyingService"));
-								}
-							}
 						} catch (Exception e) {
 							throw new Exception(e);
 						}
@@ -134,20 +133,19 @@ public class Analyzer implements IAnalyzer {
 					}
 					if(level == 3) {
 						servicesList.add(new smartcar.hil.drivernotifyingservice.AdaptiveReadyComponent(context));
-					} else {
-						throw new Exception("No changes required.");
 					}
 					break;
 				case HighwayDetected:
 					try {						
 						try {
-							for (ServiceReference<?> ref : refs) {
-								IAdaptiveReadyComponentConfigurator arcc = (IAdaptiveReadyComponentConfigurator) this.context.getService(ref);
-								if(arcc.getId().contentEquals("SAE.L3.TrafficJamChauffer")) {
-									servicesList.removeIf(service -> service.getId().contentEquals("SAE.L3.TrafficJamChauffer"));
-									break;
+							if(refs != null)
+								for (ServiceReference<?> ref : refs) {
+									IAdaptiveReadyComponentConfigurator arcc = (IAdaptiveReadyComponentConfigurator) this.context.getService(ref);
+									if(arcc.getId().contentEquals("SAE.L3.TrafficJamChauffer")) {
+										servicesList.removeIf(service -> service.getId().contentEquals("SAE.L3.TrafficJamChauffer"));
+										break;
+									}
 								}
-							}
 						} catch (Exception e) {
 							throw new Exception(e);
 						}
@@ -160,13 +158,14 @@ public class Analyzer implements IAnalyzer {
 				case TrafficJamDetected:
 					try {						
 						try {
-							for (ServiceReference<?> ref : refs) {
-								IAdaptiveReadyComponentConfigurator arcc = (IAdaptiveReadyComponentConfigurator) this.context.getService(ref);
-								if(arcc.getId().contentEquals("SAE.L3.HighwayChauffer")) {
-									servicesList.removeIf(service -> service.getId().contentEquals("SAE.L3.HighwayChauffer"));
-									break;
+							if(refs != null)
+								for (ServiceReference<?> ref : refs) {
+									IAdaptiveReadyComponentConfigurator arcc = (IAdaptiveReadyComponentConfigurator) this.context.getService(ref);
+									if(arcc.getId().contentEquals("SAE.L3.HighwayChauffer")) {
+										servicesList.removeIf(service -> service.getId().contentEquals("SAE.L3.HighwayChauffer"));
+										break;
+									}
 								}
-							}
 						} catch (Exception e) {
 							throw new Exception(e);
 						}
@@ -176,13 +175,12 @@ public class Analyzer implements IAnalyzer {
 					}
 					servicesList.add(new sae.l3.trafficjamchauffer.AdaptiveReadyComponent(context));
 					break;
-				default: throw new Exception("This event doesn't exist");
 			}
 			SystemConfiguration systemConfig = new SystemConfiguration();
 			systemConfig.setAdaptiveReadyComponentList(servicesList);
 			this.plannifier.plan(systemConfig);
 		} catch(Exception e) {
-			
+			e.printStackTrace();
 		}
 	}
 
