@@ -68,6 +68,9 @@ public class MyCommandProvider {
 			if (refs == null || refs.length <= 0)
 				return;
 		} catch (InvalidSyntaxException e) {
+			e.printStackTrace();
+		} catch(Exception ex) {
+			ex.printStackTrace();
 		}
 
 		IMonitor navigatorMonitor = (IMonitor) this.context.getService(refs[0]);
