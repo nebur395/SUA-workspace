@@ -6,5 +6,7 @@ import org.osgi.framework.InvalidSyntaxException;
 public interface IExecutor {
 
 	public void execute(IAdaptationPlan plan) throws BundleException, InvalidSyntaxException;
+
+	public void setKnowledge(IKnowledge knowledge);
 	
 }

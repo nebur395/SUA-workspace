@@ -7,4 +7,8 @@ public interface IPlannifier {
 
 	public void plan(ISystemConfiguration theSystemConfiguration) throws BundleException, InvalidSyntaxException;
 
+	public void setExecutor(IExecutor executor);
+	
+	public void setKnowledge(IKnowledge knowledge);
+
 }

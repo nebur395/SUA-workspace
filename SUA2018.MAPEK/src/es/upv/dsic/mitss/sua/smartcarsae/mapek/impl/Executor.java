@@ -1,7 +1,5 @@
 package es.upv.dsic.mitss.sua.smartcarsae.mapek.impl;
 
-import java.util.List;
-
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.BundleException;
 import org.osgi.framework.InvalidSyntaxException;
@@ -44,6 +42,10 @@ public class Executor implements IExecutor {
 //			this.knowledge.getCurrentSystemConfiguration().getAdaptiveReadyComponentList().add(n.getCurrentComponent());
 		}
 		this.knowledge.setCurrentAdaptionPlan(plan);
+	}
+	
+	public void setKnowledge(IKnowledge knowledge) {
+		this.knowledge = knowledge;
 	}
 
 }

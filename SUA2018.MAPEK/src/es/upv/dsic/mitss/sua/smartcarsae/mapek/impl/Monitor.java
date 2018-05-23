@@ -1,24 +1,19 @@
 package es.upv.dsic.mitss.sua.smartcarsae.mapek.impl;
 
-import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.IEvent;
-import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.IKnowledge;
-import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.IMonitor;
-import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.IPlannifier;
-import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.ISystemConfiguration;
-import es.upv.pros.tatami.autonomic.adaptation.framework.systemAPI.componentConfigurator.interfaces.IAdaptiveReadyComponentConfigurator;
-import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.IAnalyzer;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import es.upv.dsic.mitss.sua.smartcarsae.mapek.impl.monitores.MonitorAbstract;
 import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.EMonitorRT;
 import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.IAdaptationAction;
-import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.IAdaptationPlan;
+import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.IAnalyzer;
+import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.IEvent;
+import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.IKnowledge;
+import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.IMonitor;
 
 public class Monitor extends MonitorAbstract implements IMonitor {
 
-	Analyzer analyzer;
+	IAnalyzer analyzer;
 	IKnowledge knowledge;
 	boolean sleep = false;
 
@@ -112,16 +107,22 @@ public class Monitor extends MonitorAbstract implements IMonitor {
 
 	}
 
-	public void setAnalyzer(Analyzer analyzer) {
+	public void setAnalyzer(IAnalyzer analyzer) {
 		this.analyzer = analyzer;
 	}
 
-	public Analyzer getAnalyzer() {
+	public IAnalyzer getAnalyzer() {
 		return this.analyzer;
 	}
 
 	public IKnowledge getKnowledge() {
 		return knowledge;
+	}
+
+	@Override
+	public void setKnowledge(IKnowledge knowledge) {
+		this.knowledge = knowledge;
+		
 	}
 
 }
