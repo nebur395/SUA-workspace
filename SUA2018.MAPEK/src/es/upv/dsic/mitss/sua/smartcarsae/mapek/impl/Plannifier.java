@@ -21,7 +21,7 @@ public class Plannifier implements IPlannifier {
 	
 	@Override
 	public void plan(ISystemConfiguration theSystemConfiguration) throws BundleException, InvalidSyntaxException {
-		System.out.println("Recibido por el planificador");
+		System.out.println(theSystemConfiguration.getAdaptiveReadyComponentList().size());
 		List<IAdaptiveReadyComponentConfigurator> newActiveComponents = theSystemConfiguration.getAdaptiveReadyComponentList();
 		List<IAdaptiveReadyComponentConfigurator> currentActiveComponents = this.knowledge.getCurrentSystemConfiguration().getAdaptiveReadyComponentList();
 		List<IAdaptationAction> newAdaptationActionsList = new LinkedList<IAdaptationAction>();

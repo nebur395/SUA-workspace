@@ -28,7 +28,8 @@ public class Activator implements BundleActivator {
 		props.put("osgi.command.scope", "SmartCarSUA");
 		props.put("osgi.command.function", new String[] { 
 				"printCSC", 
-				"approachingCity" 
+				"approachingCity",
+				"enteringHighway"
 				});
 		this.commandProvReg = Activator.context.registerService(MyCommandProvider.class.getName(),
 				new MyCommandProvider(Activator.context), props);

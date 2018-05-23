@@ -30,14 +30,15 @@ public class MyCommandProvider {
 		ServiceReference<?>[] refs = null;
 		try {
 
-			refs = this.context.getAllServiceReferences(IAdaptiveReadyComponentConfigurator.class.getName(),
-					"(started=true)");
+			refs = this.context.getServiceReferences(IAdaptiveReadyComponentConfigurator.class.getName(),
+					"(started=false)");
 			try {
 				for (ServiceReference ref : refs) {
 					arcc = (IAdaptiveReadyComponentConfigurator) this.context.getService(ref);
 					arc_list.add(arcc.getClass().getName());
 				}
 			} catch (Exception e) {
+				e.printStackTrace();
 			}
 
 		} catch (InvalidSyntaxException e) {
@@ -81,8 +82,33 @@ public class MyCommandProvider {
 				Event event = new Event(EMonitorRT.ApproachingCity);
 				navigatorMonitor.notifyEvent(new Event(EMonitorRT.ApproachingCity));
 			}
-			else 
-				System.out.println("Monitor nulo");
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+public void enteringHighway() {
+		
+		ServiceReference<?>[] refs = null;
+
+		try {
+			refs = this.context.getServiceReferences(IMonitor.class.getName(), "(id=NavigatorMonitor)");
+			if (refs == null || refs.length <= 0) {
+				System.out.println("Servicio no encontrado");
+				return;
+			}
+		} catch (InvalidSyntaxException e) {
+			e.printStackTrace();
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		try {
+			IMonitor navigatorMonitor = (IMonitor) this.context.getService(refs[0]);
+			if(navigatorMonitor != null) {
+				Event event = new Event(EMonitorRT.HighwayDetected);
+				navigatorMonitor.notifyEvent(event);
+			}
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

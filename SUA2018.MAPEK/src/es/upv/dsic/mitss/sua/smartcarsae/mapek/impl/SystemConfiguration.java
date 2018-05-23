@@ -16,7 +16,7 @@ public class SystemConfiguration implements ISystemConfiguration {
 	@Override
 	public List<IAdaptiveReadyComponentConfigurator> getAdaptiveReadyComponentList() {
 		// TODO Auto-generated method stub
-		return null;
+		return activeComponents;
 	}
 	
 	public void setAdaptiveReadyComponentList(List<IAdaptiveReadyComponentConfigurator> list) {

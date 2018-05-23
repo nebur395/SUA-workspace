@@ -1,5 +1,6 @@
 package es.upv.dsic.mitss.sua.smartcarsae.mapek.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.osgi.framework.BundleContext;
@@ -29,6 +30,8 @@ public class Analyzer implements IAnalyzer {
 		System.out.println("Recibido por el analizador");
 		try {
 			List<IAdaptiveReadyComponentConfigurator> servicesList = this.knowledge.getCurrentSystemConfiguration().getAdaptiveReadyComponentList();
+			if(servicesList == null)
+				servicesList = new ArrayList<>();
 			ServiceReference<?>[] refs = null;
 			refs = this.context.getAllServiceReferences(IAdaptiveReadyComponentConfigurator.class.getName(),
 					null);

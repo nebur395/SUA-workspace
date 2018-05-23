@@ -3,10 +3,11 @@ package sae.l3.trafficjamchauffer;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
+
 public class Activator implements BundleActivator {
 
 	private static BundleContext context;
-
+	private AdaptiveReadyComponent arc;
 	static BundleContext getContext() {
 		return context;
 	}
@@ -17,6 +18,8 @@ public class Activator implements BundleActivator {
 	 */
 	public void start(BundleContext bundleContext) throws Exception {
 		Activator.context = bundleContext;
+		arc = new AdaptiveReadyComponent(bundleContext);
+		arc.deploy(null);
 	}
 
 	/*

@@ -24,14 +24,8 @@ public class Activator implements BundleActivator {
 	public void start(BundleContext bundleContext) throws Exception {
 		Activator.context = bundleContext;
 		
-		try {
-			IAdaptiveReadyComponentConfigurator arc_SAE_L1_ACC = this.getARC("SAE.L1.ACC");
-			if (arc_SAE_L1_ACC != null) {
-				arc_SAE_L1_ACC.deploy(null);
-			}
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+		arc = new AdaptiveReadyComponent(bundleContext);
+		arc.deploy(null);
 	}
 
 	/*
