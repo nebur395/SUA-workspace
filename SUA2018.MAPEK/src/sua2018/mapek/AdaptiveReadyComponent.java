@@ -8,7 +8,7 @@ import es.upv.pros.tatami.autonomic.adaptation.framework.systemComponentsManager
 
 public class AdaptiveReadyComponent extends AdaptiveReadyComponentConfigurator {
 	
-	public static String SS_MAPEK = "MAPEK";
+	public static String SS_MAPEK = "SUA2018.MAPEK";
 	
 	
 	protected SUA2018_MAPEK_Loop acc = null;
@@ -63,5 +63,8 @@ public class AdaptiveReadyComponent extends AdaptiveReadyComponentConfigurator {
 		return null;
 	}
 
+	public String getName() {
+		return SS_MAPEK;
+	}
 
 }

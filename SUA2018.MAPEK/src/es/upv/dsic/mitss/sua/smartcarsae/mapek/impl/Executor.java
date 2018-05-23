@@ -23,14 +23,14 @@ public class Executor implements IExecutor {
 
 	@Override
 	public void execute(IAdaptationPlan plan) throws BundleException, InvalidSyntaxException {
-		System.out.println("Recibido por el ejecutor");
+		System.out.println("Recibido por el ejecutor: "+plan.getActions().size());
 		// TODO Auto-generated method stub
 		ServiceReference<?>[] refs = null;
 		refs = this.context.getAllServiceReferences(IAdaptiveReadyComponentConfigurator.class.getName(), null);
-//		this.knowledge.getCurrentSystemConfiguration().getAdaptiveReadyComponentList().clear();
-		if(refs != null)
+//		this.knowledge.getCurrentSystemConfiguration().getAdaptiveReadyComponentList().clear();		
 			for (IAdaptationAction n : plan.getActions()) {
-				for (ServiceReference<?> a : refs) {
+				System.out.println(n.getCurrentComponent().getName());
+					ServiceReference<?> a = this.context.getServiceReference(n.getCurrentComponent().getName());
 					IAdaptiveReadyComponentConfigurator adaptiveReady = (IAdaptiveReadyComponentConfigurator) this.context
 							.getService(a);
 					if (adaptiveReady.getId().equals(n.getCurrentComponent().getId())) {
@@ -40,7 +40,6 @@ public class Executor implements IExecutor {
 							adaptiveReady.undeploy((ISystemComponentsManager) this.knowledge.getCurrentSystemConfiguration());
 						}
 					}
-				}
 	//			this.knowledge.getCurrentSystemConfiguration().getAdaptiveReadyComponentList().add(n.getCurrentComponent());
 			}
 		this.knowledge.setCurrentAdaptionPlan(plan);

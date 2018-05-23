@@ -29,7 +29,7 @@ public class Analyzer implements IAnalyzer {
 	public void notifyEvent(IEvent event) {
 		System.out.println("Recibido por el analizador");
 		try {
-			List<IAdaptiveReadyComponentConfigurator> servicesList = this.knowledge.getCurrentSystemConfiguration().getAdaptiveReadyComponentList();
+			List<IAdaptiveReadyComponentConfigurator> servicesList = new ArrayList<>(this.knowledge.getCurrentSystemConfiguration().getAdaptiveReadyComponentList());
 			if(servicesList == null)
 				servicesList = new ArrayList<>();
 			ServiceReference<?>[] refs = null;
@@ -181,7 +181,7 @@ public class Analyzer implements IAnalyzer {
 			}
 			SystemConfiguration systemConfig = new SystemConfiguration();
 			systemConfig.setAdaptiveReadyComponentList(servicesList);
-			this.plannifier.plan(systemConfig);
+			this.plannifier.plan(systemConfig);			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

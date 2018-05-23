@@ -8,7 +8,7 @@ import es.upv.pros.tatami.autonomic.adaptation.framework.systemComponentsManager
 
 public class AdaptiveReadyComponent extends AdaptiveReadyComponentConfigurator {
 	
-	public static String SS_DDTFallback = "DDTFallback";
+	public static String SS_SAE_L3_HighwayChauffer = "IHighwayChauffer";
 	public static String PAR_ACTIVATIONDISTANCE = "ActivationDistance";
 	
 	
@@ -58,9 +58,13 @@ public class AdaptiveReadyComponent extends AdaptiveReadyComponentConfigurator {
 
 	@Override
 	public Object getServiceSupply(String serviceSupply) {
-		if ( serviceSupply.equalsIgnoreCase(SS_DDTFallback) )
+		if ( serviceSupply.equalsIgnoreCase(SS_SAE_L3_HighwayChauffer) )
 			return this.acc;
 		return null;
+	}
+	
+	public String getName() {
+		return SS_SAE_L3_HighwayChauffer;
 	}
 
 
