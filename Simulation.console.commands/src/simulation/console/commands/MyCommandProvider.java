@@ -60,22 +60,32 @@ public class MyCommandProvider {
 	}
 
 	public void approachingCity() {
-
+		
 		ServiceReference<?>[] refs = null;
 
 		try {
 			refs = this.context.getServiceReferences(IMonitor.class.getName(), "(id=NavigatorMonitor)");
-			if (refs == null || refs.length <= 0)
+			if (refs == null || refs.length <= 0) {
+				System.out.println("Servicio no encontrado");
 				return;
+			}
 		} catch (InvalidSyntaxException e) {
 			e.printStackTrace();
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		}
-
-		IMonitor navigatorMonitor = (IMonitor) this.context.getService(refs[0]);
-		navigatorMonitor.notifyEvent(new Event(EMonitorRT.ApproachingCity));
-
+		
+		try {
+			IMonitor navigatorMonitor = (IMonitor) this.context.getService(refs[0]);
+			if(navigatorMonitor != null) {
+				Event event = new Event(EMonitorRT.ApproachingCity);
+				navigatorMonitor.notifyEvent(new Event(EMonitorRT.ApproachingCity));
+			}
+			else 
+				System.out.println("Monitor nulo");
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }
