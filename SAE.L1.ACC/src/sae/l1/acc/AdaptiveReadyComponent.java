@@ -12,7 +12,7 @@ public class AdaptiveReadyComponent extends AdaptiveReadyComponentConfigurator {
 	
 	public static String SR_ENGINE = "Engine";
 	public static String SR_DISTANCESENSOR = "DistanceSensor";
-	public static String SS_AUTOPILOT = "SAE.L1.ACC";
+	public static String SS_AUTOPILOT = "AutoPilot";
 	public static String PAR_SECURITYDISTANCE = "SecurityDistance";
 	
 	

@@ -21,13 +21,16 @@ public class SAE_L3_HighwayChauffer implements IHighwayChauffer {
 		this.context = context;
 		this.properties = new Hashtable<String, Object>();
 		this.properties.put("id", id);
-		this.properties.put("level", 1);
+		System.out.println(id);
+		this.properties.put("level", 3);
 	}
 	
 	public IHighwayChauffer start() {
-		
-		this.reg = this.context.registerService(IHighwayChauffer.class, this, this.properties);
-		
+		//try {
+		//	this.reg = this.context.registerService(IHighwayChauffer.class, this, this.properties);
+		//} catch(Exception e) {
+		//	e.printStackTrace();
+		//}
 		// La magia empieza. Se recomienda crear un worker (Thread o similar) y que empiece
 		//   a simular movimiento ACC.
 		// Se dispone de un motor, de un sensor de distancia y de una distancia de seguridad ...

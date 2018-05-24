@@ -33,10 +33,11 @@ public class MyCommandProvider {
 			refs = this.context.getServiceReferences(IAdaptiveReadyComponentConfigurator.class.getName(),
 					"(started=true)");
 			try {
-				for (ServiceReference ref : refs) {
-					arcc = (IAdaptiveReadyComponentConfigurator) this.context.getService(ref);
-					arc_list.add(arcc.getClass().getName());
-				}
+				if(refs != null)
+					for (ServiceReference ref : refs) {
+						arcc = (IAdaptiveReadyComponentConfigurator) this.context.getService(ref);
+						arc_list.add(arcc.getClass().getName());
+					}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
