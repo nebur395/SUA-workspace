@@ -41,7 +41,7 @@ public class Analyzer implements IAnalyzer {
 							if(refs != null)
 								for (ServiceReference<?> ref : refs) {
 									IAdaptiveReadyComponentConfigurator arcc = (IAdaptiveReadyComponentConfigurator) this.context.getService(ref);
-									if(arcc.getId().contentEquals("SAE.L3.HighwayChauffer") || arcc.getId().contentEquals("SAE.L3.TrafficJamChauffer")) {
+									if(arcc.getId().contentEquals("HighwayChauffer") || arcc.getId().contentEquals("TrafficJamChauffer")) {
 										level = 3;
 										break;
 									}
@@ -68,10 +68,10 @@ public class Analyzer implements IAnalyzer {
 							if(refs != null)
 								for (ServiceReference<?> ref : refs) {
 									IAdaptiveReadyComponentConfigurator arcc = (IAdaptiveReadyComponentConfigurator) this.context.getService(ref);
-									if(arcc.getId().contentEquals("SAE.L3.HighwayChauffer") || arcc.getId().contentEquals("SAE.L3.TrafficJamChauffer")) {
+									if(arcc.getId().contentEquals("HighwayChauffer") || arcc.getId().contentEquals("TrafficJamChauffer")) {
 										level = 3;
 										break;
-									} else if(arcc.getId().contentEquals("SAE.L1.ACC"))
+									} else if(arcc.getId().contentEquals("TrafficJamChauffer"))
 										level = 1;
 								}
 						} catch (Exception e) {
@@ -84,7 +84,7 @@ public class Analyzer implements IAnalyzer {
 					if(level == 3) {
 						servicesList.add(new sae.l3.ddtfallback.AdaptiveReadyComponent(context).setParameter("ActivationDistance", 0));
 					} else if(level == 1) {
-						servicesList.removeIf(service -> service.getId().contentEquals("SAE_L1_ACC"));
+						servicesList.removeIf(service -> service.getId().contentEquals("Autopilot"));
 						servicesList.add(new sae.l0.manualdriving.AdaptiveReadyComponent(context));
 					}
 					break;
@@ -95,7 +95,7 @@ public class Analyzer implements IAnalyzer {
 							if(refs != null)
 								for (ServiceReference<?> ref : refs) {
 									IAdaptiveReadyComponentConfigurator arcc = (IAdaptiveReadyComponentConfigurator) this.context.getService(ref);
-									if(arcc.getId().contentEquals("SAE.L3.TrafficJamChauffer") || arcc.getId().contentEquals("SAE.L3.TrafficJamChauffer")) {
+									if(arcc.getId().contentEquals("HighwayChauffer") || arcc.getId().contentEquals("TrafficJamChauffer")) {
 										level = 3;
 										break;
 									}
@@ -117,12 +117,12 @@ public class Analyzer implements IAnalyzer {
 							if(refs != null)
 								for (ServiceReference<?> ref : refs) {
 									IAdaptiveReadyComponentConfigurator arcc = (IAdaptiveReadyComponentConfigurator) this.context.getService(ref);
-									if(arcc.getId().contentEquals("SAE.L3.DDTFallback")) {
-										servicesList.removeIf(service -> service.getId().contentEquals("SAE.L3.DDTFallback"));
+									if(arcc.getId().contentEquals("DDTFallback")) {
+										servicesList.removeIf(service -> service.getId().contentEquals("DDTFallback"));
 										servicesList.add(new sae.l1.acc.AdaptiveReadyComponent(context));
 									}
-									if(arcc.getId().contentEquals("SmartCar.HiL.DriverNotifyingService")) {
-										servicesList.removeIf(service -> service.getId().contentEquals("SmartCar.HiL.DriverNotifyingService"));
+									if(arcc.getId().contentEquals("DriverNotifyingService")) {
+										servicesList.removeIf(service -> service.getId().contentEquals("DriverNotifyingService"));
 									}
 								}
 						} catch (Exception e) {
@@ -142,8 +142,8 @@ public class Analyzer implements IAnalyzer {
 							if(refs != null)
 								for (ServiceReference<?> ref : refs) {
 									IAdaptiveReadyComponentConfigurator arcc = (IAdaptiveReadyComponentConfigurator) this.context.getService(ref);
-									if(arcc.getId().contentEquals("SAE.L3.TrafficJamChauffer")) {
-										servicesList.removeIf(service -> service.getId().contentEquals("SAE.L3.TrafficJamChauffer"));
+									if(arcc.getId().contentEquals("TrafficJamChauffer")) {
+										servicesList.removeIf(service -> service.getId().contentEquals("TrafficJamChauffer"));
 										break;
 									}
 								}
@@ -162,8 +162,8 @@ public class Analyzer implements IAnalyzer {
 							if(refs != null)
 								for (ServiceReference<?> ref : refs) {
 									IAdaptiveReadyComponentConfigurator arcc = (IAdaptiveReadyComponentConfigurator) this.context.getService(ref);
-									if(arcc.getId().contentEquals("SAE.L3.HighwayChauffer")) {
-										servicesList.removeIf(service -> service.getId().contentEquals("SAE.L3.HighwayChauffer"));
+									if(arcc.getId().contentEquals("HighwayChauffer")) {
+										servicesList.removeIf(service -> service.getId().contentEquals("HighwayChauffer"));
 										break;
 									}
 								}

@@ -12,7 +12,6 @@ import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.IAdaptationPlan;
 import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.IExecutor;
 import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.IKnowledge;
 import es.upv.pros.tatami.autonomic.adaptation.framework.systemAPI.componentConfigurator.interfaces.IAdaptiveReadyComponentConfigurator;
-import es.upv.pros.tatami.autonomic.adaptation.framework.systemComponentsManager.interfaces.ISystemComponentsManager;
 
 public class Executor implements IExecutor {
 
@@ -30,21 +29,19 @@ public class Executor implements IExecutor {
 			for (IAdaptationAction n : plan.getActions()) {
 				System.out.println(n.getCurrentComponent().getId());
 				if(n.getCurrentAction() == EAdaptationAction.deploy) {
+					System.out.println("Deploy: "+n.getCurrentComponent().getId());
 					n.getCurrentComponent().deploy(null);
 				} else {
+					System.out.println("Undeploy: "+n.getCurrentComponent().getId());
 					Collection<ServiceReference<IAdaptiveReadyComponentConfigurator>> al = this.context.getServiceReferences(IAdaptiveReadyComponentConfigurator.class, 
 							"(id="+n.getCurrentComponent().getId()+")");
 					for(ServiceReference<IAdaptiveReadyComponentConfigurator> a : al) {
 						IAdaptiveReadyComponentConfigurator adaptiveReady = (IAdaptiveReadyComponentConfigurator) this.context
 								.getService(a);
-						if (adaptiveReady.getId().equals(n.getCurrentComponent().getId())) {
-							if (n.getCurrentAction() == EAdaptationAction.deploy) {
-								adaptiveReady.deploy((ISystemComponentsManager) this.knowledge.getCurrentSystemConfiguration());
-							} else if (n.getCurrentAction() == EAdaptationAction.undeploy) {
-								adaptiveReady.undeploy((ISystemComponentsManager) this.knowledge.getCurrentSystemConfiguration());
-							}
-						} else {
-							System.out.println("Diferencias ["+adaptiveReady.getId()+", "+n.getCurrentComponent().getId()+"]");
+						if (n.getCurrentAction() == EAdaptationAction.deploy) {
+							adaptiveReady.deploy(null);
+						} else if (n.getCurrentAction() == EAdaptationAction.undeploy) {
+							adaptiveReady.undeploy(null);
 						}
 					}
 				}

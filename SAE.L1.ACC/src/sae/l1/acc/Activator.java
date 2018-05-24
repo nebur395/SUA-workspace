@@ -23,7 +23,6 @@ public class Activator implements BundleActivator {
 	 */
 	public void start(BundleContext bundleContext) throws Exception {
 		Activator.context = bundleContext;
-		
 		arc = new AdaptiveReadyComponent(bundleContext);
 		arc.deploy(null);
 	}
@@ -39,8 +38,8 @@ public class Activator implements BundleActivator {
 	protected IAdaptiveReadyComponentConfigurator getARC(String id) {
 		Collection<ServiceReference<IAdaptiveReadyComponentConfigurator>> refs = null;
 		try {
-			refs = this.context.getServiceReferences(IAdaptiveReadyComponentConfigurator.class, "(id=" + id + ")");
-			return (IAdaptiveReadyComponentConfigurator) this.context.getService(refs.iterator().next());
+			refs = Activator.context.getServiceReferences(IAdaptiveReadyComponentConfigurator.class, "(id=" + id + ")");
+			return (IAdaptiveReadyComponentConfigurator) Activator.context.getService(refs.iterator().next());
 		} catch (Exception e) {
 			return null;
 		}
