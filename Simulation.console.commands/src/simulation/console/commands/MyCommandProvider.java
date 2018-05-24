@@ -31,12 +31,12 @@ public class MyCommandProvider {
 		try {
 
 			refs = this.context.getServiceReferences(IAdaptiveReadyComponentConfigurator.class.getName(),
-					"(started=true)");
+					null);
 			try {
 				if(refs != null)
-					for (ServiceReference ref : refs) {
+					for (ServiceReference<?> ref : refs) {
 						arcc = (IAdaptiveReadyComponentConfigurator) this.context.getService(ref);
-						arc_list.add(arcc.getClass().getName());
+						arc_list.add(arcc.getId());
 					}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -81,7 +81,7 @@ public class MyCommandProvider {
 			IMonitor navigatorMonitor = (IMonitor) this.context.getService(refs[0]);
 			if(navigatorMonitor != null) {
 				Event event = new Event(EMonitorRT.ApproachingCity);
-				navigatorMonitor.notifyEvent(new Event(EMonitorRT.ApproachingCity));
+				navigatorMonitor.notifyEvent(event);
 			}
 		} catch(Exception e) {
 			e.printStackTrace();

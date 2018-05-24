@@ -30,8 +30,6 @@ public class Analyzer implements IAnalyzer {
 		System.out.println("Recibido por el analizador");
 		try {
 			List<IAdaptiveReadyComponentConfigurator> servicesList = new ArrayList<>(this.knowledge.getCurrentSystemConfiguration().getAdaptiveReadyComponentList());
-			if(servicesList == null)
-				servicesList = new ArrayList<>();
 			ServiceReference<?>[] refs = null;
 			refs = this.context.getAllServiceReferences(IAdaptiveReadyComponentConfigurator.class.getName(),
 					null);
@@ -43,7 +41,7 @@ public class Analyzer implements IAnalyzer {
 							if(refs != null)
 								for (ServiceReference<?> ref : refs) {
 									IAdaptiveReadyComponentConfigurator arcc = (IAdaptiveReadyComponentConfigurator) this.context.getService(ref);
-									if(arcc.getId().contentEquals("SAE.L3.TrafficJamChauffer") || arcc.getId().contentEquals("SAE.L3.TrafficJamChauffer")) {
+									if(arcc.getId().contentEquals("SAE.L3.HighwayChauffer") || arcc.getId().contentEquals("SAE.L3.TrafficJamChauffer")) {
 										level = 3;
 										break;
 									}

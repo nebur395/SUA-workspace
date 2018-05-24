@@ -21,7 +21,6 @@ public class AdaptiveReadyComponent extends AdaptiveReadyComponentConfigurator {
 	@Override
 	public IAdaptiveReadyComponentConfigurator deploy(ISystemComponentsManager theSystemComponentsManager) {
 		super.deploy(theSystemComponentsManager);
-		System.out.println("Llama al ARC");
 		this.acc.start();
 		return this;
 	}

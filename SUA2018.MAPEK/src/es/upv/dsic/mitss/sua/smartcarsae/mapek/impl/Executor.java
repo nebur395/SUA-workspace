@@ -1,5 +1,7 @@
 package es.upv.dsic.mitss.sua.smartcarsae.mapek.impl;
 
+import java.util.Collection;
+
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.BundleException;
 import org.osgi.framework.InvalidSyntaxException;
@@ -29,15 +31,21 @@ public class Executor implements IExecutor {
 		refs = this.context.getAllServiceReferences(IAdaptiveReadyComponentConfigurator.class.getName(), null);
 //		this.knowledge.getCurrentSystemConfiguration().getAdaptiveReadyComponentList().clear();		
 			for (IAdaptationAction n : plan.getActions()) {
-				System.out.println(n.getCurrentComponent().getName());
-					ServiceReference<?> a = this.context.getServiceReference(n.getCurrentComponent().getName());
-					IAdaptiveReadyComponentConfigurator adaptiveReady = (IAdaptiveReadyComponentConfigurator) this.context
-							.getService(a);
-					if (adaptiveReady.getId().equals(n.getCurrentComponent().getId())) {
-						if (n.getCurrentAction() == EAdaptationAction.deploy) {
-							adaptiveReady.deploy((ISystemComponentsManager) this.knowledge.getCurrentSystemConfiguration());
-						} else if (n.getCurrentAction() == EAdaptationAction.undeploy) {
-							adaptiveReady.undeploy((ISystemComponentsManager) this.knowledge.getCurrentSystemConfiguration());
+				System.out.println(n.getCurrentComponent().getId());
+					Collection<ServiceReference<IAdaptiveReadyComponentConfigurator>> al = this.context.getServiceReferences(IAdaptiveReadyComponentConfigurator.class, 
+							"(id="+n.getCurrentComponent().getId()+")");
+					for(ServiceReference<IAdaptiveReadyComponentConfigurator> a : al) {
+						IAdaptiveReadyComponentConfigurator adaptiveReady = (IAdaptiveReadyComponentConfigurator) this.context
+								.getService(a);
+						if (adaptiveReady.getId().equals(n.getCurrentComponent().getId())) {
+							System.out.println("Coincide");
+							if (n.getCurrentAction() == EAdaptationAction.deploy) {
+								adaptiveReady.deploy((ISystemComponentsManager) this.knowledge.getCurrentSystemConfiguration());
+							} else if (n.getCurrentAction() == EAdaptationAction.undeploy) {
+								adaptiveReady.undeploy((ISystemComponentsManager) this.knowledge.getCurrentSystemConfiguration());
+							}
+						} else {
+							System.out.println("Diferencias ["+adaptiveReady.getId()+", "+n.getCurrentComponent().getId()+"]");
 						}
 					}
 	//			this.knowledge.getCurrentSystemConfiguration().getAdaptiveReadyComponentList().add(n.getCurrentComponent());

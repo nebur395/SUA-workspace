@@ -30,7 +30,7 @@ public class SAE_L3_DDTFallback implements IDDTFallback {
 	
 	public IDDTFallback start() {
 		
-		this.reg = this.context.registerService(IDDTFallback.class, this, this.properties);
+		//this.reg = this.context.registerService(IDDTFallback.class, this, this.properties);
 		
 		// La magia empieza. Se recomienda crear un worker (Thread o similar) y que empiece
 		//   a simular movimiento ACC.

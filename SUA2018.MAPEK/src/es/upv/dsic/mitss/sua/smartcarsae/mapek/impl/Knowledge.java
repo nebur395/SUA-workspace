@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
 
 import es.upv.dsic.mitss.sua.smartcarsae.mapek.interfaces.IAdaptationPlan;
@@ -38,7 +39,21 @@ public class Knowledge implements IKnowledge {
 
 	@Override
 	public ISystemConfiguration getCurrentSystemConfiguration() {
-		// TODO Auto-generated method stub
+		List<IAdaptiveReadyComponentConfigurator> servicesList = new ArrayList<>();
+		ServiceReference<?>[] refs = null;
+		try {
+			refs = this.context.getServiceReferences(IAdaptiveReadyComponentConfigurator.class.getName(), null);
+		} catch (InvalidSyntaxException e) {
+			e.printStackTrace();
+		}
+		if(refs != null)
+			for (ServiceReference<?> ref : refs) {
+				IAdaptiveReadyComponentConfigurator arcc = (IAdaptiveReadyComponentConfigurator) this.context.getService(ref);
+				servicesList.add(arcc);
+			}
+		SystemConfiguration sysconf = new SystemConfiguration();
+		sysconf.setAdaptiveReadyComponentList(servicesList);
+		this.systemConfig = sysconf;
 		return this.systemConfig;
 	}
 

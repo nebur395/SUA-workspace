@@ -22,9 +22,10 @@ public class Monitor extends MonitorAbstract implements IMonitor {
 		try {
 			System.out.println("Notificado");
 		//Al final no se ha realizado la implementación del Patron de diseño Template.
+			this.analyzer.notifyEvent(event);
 		if( this.knowledge.getCurrentAdaptionPlan() == null) {
 			this.analyzer.notifyEvent(event);
-		} else {
+		} else if(!true) {
 			List<IAdaptationAction> currentActions = this.knowledge.getCurrentAdaptionPlan().getActions();
 			List<String> deployedComponents = new ArrayList<String>();
 			
