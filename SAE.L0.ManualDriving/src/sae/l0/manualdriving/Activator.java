@@ -21,6 +21,7 @@ public class Activator implements BundleActivator {
 		Activator.context = bundleContext;
 		arc = new AdaptiveReadyComponent(bundleContext);
 		arc.start();
+		arc.deploy(null);
 	}
 
 	/*

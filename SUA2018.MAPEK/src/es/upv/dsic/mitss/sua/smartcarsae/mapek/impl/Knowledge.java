@@ -23,7 +23,7 @@ public class Knowledge implements IKnowledge {
 		List<IAdaptiveReadyComponentConfigurator> servicesList = new ArrayList<>();
 		try {
 			ServiceReference<?>[] refs = null;
-			refs = this.context.getServiceReferences(IAdaptiveReadyComponentConfigurator.class.getName(), null);
+			refs = this.context.getAllServiceReferences(IAdaptiveReadyComponentConfigurator.class.getName(), "(started=true)");
 			if(refs != null)
 				for (ServiceReference<?> ref : refs) {
 					IAdaptiveReadyComponentConfigurator arcc = (IAdaptiveReadyComponentConfigurator) this.context.getService(ref);
@@ -42,7 +42,7 @@ public class Knowledge implements IKnowledge {
 		List<IAdaptiveReadyComponentConfigurator> servicesList = new ArrayList<>();
 		ServiceReference<?>[] refs = null;
 		try {
-			refs = this.context.getServiceReferences(IAdaptiveReadyComponentConfigurator.class.getName(), null);
+			refs = this.context.getServiceReferences(IAdaptiveReadyComponentConfigurator.class.getName(), "(started=true)");
 		} catch (InvalidSyntaxException e) {
 			e.printStackTrace();
 		}

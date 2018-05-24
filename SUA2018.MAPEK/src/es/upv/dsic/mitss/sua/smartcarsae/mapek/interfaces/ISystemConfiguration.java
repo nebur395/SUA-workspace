@@ -6,4 +6,5 @@ import es.upv.pros.tatami.autonomic.adaptation.framework.systemAPI.componentConf
 
 public interface ISystemConfiguration {
 	public List<IAdaptiveReadyComponentConfigurator> getAdaptiveReadyComponentList();
+	public void setAdaptiveReadyComponentList(List<IAdaptiveReadyComponentConfigurator> servicesList);
 }

@@ -32,7 +32,7 @@ public class Analyzer implements IAnalyzer {
 			List<IAdaptiveReadyComponentConfigurator> servicesList = new ArrayList<>(this.knowledge.getCurrentSystemConfiguration().getAdaptiveReadyComponentList());
 			ServiceReference<?>[] refs = null;
 			refs = this.context.getAllServiceReferences(IAdaptiveReadyComponentConfigurator.class.getName(),
-					null);
+					"(started=true)");
 			int level = 0;
 			switch (event.getRT()) {
 				case ApproachingCity:
@@ -41,7 +41,8 @@ public class Analyzer implements IAnalyzer {
 							if(refs != null)
 								for (ServiceReference<?> ref : refs) {
 									IAdaptiveReadyComponentConfigurator arcc = (IAdaptiveReadyComponentConfigurator) this.context.getService(ref);
-									if(arcc.getId().contentEquals("HighwayChauffer") || arcc.getId().contentEquals("TrafficJamChauffer")) {
+									if(arcc.getId().contentEquals("SAE.L3.HighwayChauffer") || 
+											arcc.getId().contentEquals("SAE.L3.TrafficJamChauffer")) {
 										level = 3;
 										break;
 									}
@@ -54,8 +55,8 @@ public class Analyzer implements IAnalyzer {
 						throw new Exception(e);
 					}
 					if(level == 3) {
-						servicesList.add(new sae.l3.ddtfallback.AdaptiveReadyComponent(context).setParameter("ActivationDistance", 500));
-						servicesList.add(new smartcar.hil.drivernotifyingservice.AdaptiveReadyComponent(context).setParameter("Timeout", 10));
+						//servicesList.add(new sae.l3.ddtfallback.AdaptiveReadyComponent(context).setParameter("ActivationDistance", 500));
+						//servicesList.add(new smartcar.hil.drivernotifyingservice.AdaptiveReadyComponent(context).setParameter("Timeout", 10));
 					}
 					break;
 				case CollisionSensorFailure:
@@ -82,10 +83,10 @@ public class Analyzer implements IAnalyzer {
 						throw new Exception(e);
 					}
 					if(level == 3) {
-						servicesList.add(new sae.l3.ddtfallback.AdaptiveReadyComponent(context).setParameter("ActivationDistance", 0));
+						//servicesList.add(new sae.l3.ddtfallback.AdaptiveReadyComponent(context).setParameter("ActivationDistance", 0));
 					} else if(level == 1) {
-						servicesList.removeIf(service -> service.getId().contentEquals("Autopilot"));
-						servicesList.add(new sae.l0.manualdriving.AdaptiveReadyComponent(context));
+						//servicesList.removeIf(service -> service.getId().contentEquals("Autopilot"));
+						//servicesList.add(new sae.l0.manualdriving.AdaptiveReadyComponent(context));
 					}
 					break;
 				case DriverAsleep:
@@ -108,7 +109,7 @@ public class Analyzer implements IAnalyzer {
 						throw new Exception(e);
 					}
 					if(level == 3) {
-						servicesList.add(new smartcar.hil.drivernotifyingservice.AdaptiveReadyComponent(context));
+						//servicesList.add(new smartcar.hil.drivernotifyingservice.AdaptiveReadyComponent(context));
 					}
 					break;
 				case DriverAttentive:
@@ -119,7 +120,7 @@ public class Analyzer implements IAnalyzer {
 									IAdaptiveReadyComponentConfigurator arcc = (IAdaptiveReadyComponentConfigurator) this.context.getService(ref);
 									if(arcc.getId().contentEquals("DDTFallback")) {
 										servicesList.removeIf(service -> service.getId().contentEquals("DDTFallback"));
-										servicesList.add(new sae.l1.acc.AdaptiveReadyComponent(context));
+										//servicesList.add(new sae.l1.acc.AdaptiveReadyComponent(context));
 									}
 									if(arcc.getId().contentEquals("DriverNotifyingService")) {
 										servicesList.removeIf(service -> service.getId().contentEquals("DriverNotifyingService"));
@@ -133,7 +134,7 @@ public class Analyzer implements IAnalyzer {
 						throw new Exception(e);
 					}
 					if(level == 3) {
-						servicesList.add(new smartcar.hil.drivernotifyingservice.AdaptiveReadyComponent(context));
+						//servicesList.add(new smartcar.hil.drivernotifyingservice.AdaptiveReadyComponent(context));
 					}
 					break;
 				case HighwayDetected:
@@ -154,7 +155,7 @@ public class Analyzer implements IAnalyzer {
 					} catch (InvalidSyntaxException e) {
 						throw new Exception(e);
 					}
-					servicesList.add(new sae.l3.highwaychauffer.AdaptiveReadyComponent(context));
+					//servicesList.add(new sae.l3.highwaychauffer.AdaptiveReadyComponent(context));
 					break;
 				case TrafficJamDetected:
 					try {						
@@ -174,7 +175,7 @@ public class Analyzer implements IAnalyzer {
 					} catch (InvalidSyntaxException e) {
 						throw new Exception(e);
 					}
-					servicesList.add(new sae.l3.trafficjamchauffer.AdaptiveReadyComponent(context));
+					//servicesList.add(new sae.l3.trafficjamchauffer.AdaptiveReadyComponent(context));
 					break;
 			}
 			SystemConfiguration systemConfig = new SystemConfiguration();

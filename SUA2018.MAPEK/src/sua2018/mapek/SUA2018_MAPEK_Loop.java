@@ -6,7 +6,7 @@ import java.util.Hashtable;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceRegistration;
 
-import es.upv.dsic.mitss.sua.smartcarsae.mapek.impl.Analyzer;
+import es.upv.dsic.mitss.sua.smartcarsae.mapek.impl.Analyzer_new;
 import es.upv.dsic.mitss.sua.smartcarsae.mapek.impl.Executor;
 import es.upv.dsic.mitss.sua.smartcarsae.mapek.impl.Knowledge;
 import es.upv.dsic.mitss.sua.smartcarsae.mapek.impl.Monitor;
@@ -27,16 +27,15 @@ public class SUA2018_MAPEK_Loop implements ILoop {
 	protected IExecutor executor;
 	
 	protected BundleContext context = null;
-	protected ServiceRegistration<?> reg = null, monitorService = null;
+	protected ServiceRegistration<?> monitorService = null;
 	protected Dictionary<String, Object> properties = null;
 		
 	
 	public SUA2018_MAPEK_Loop(BundleContext context, String id) {
 		this.context = context;
-		this.properties = new Hashtable<String, Object>();
-		this.properties.put("id", id);
+		System.out.println("Hola");
 		this.monitor = new Monitor();
-		this.analyzer = new Analyzer(context);
+		this.analyzer = new Analyzer_new(context);
 		this.plannifier = new Plannifier();
 		this.executor = new Executor(context);
 		this.knowledge = new Knowledge(context);
@@ -50,7 +49,6 @@ public class SUA2018_MAPEK_Loop implements ILoop {
 	}
 	
 	public ILoop start() {
-		this.reg = this.context.registerService(ILoop.class, this, this.properties);
 		Hashtable<String, String> props = new Hashtable<String, String>();
 		props.put("id", "NavigatorMonitor");
 		this.monitorService = this.context.registerService(IMonitor.class.getName(),
@@ -63,8 +61,6 @@ public class SUA2018_MAPEK_Loop implements ILoop {
 	}
 	
 	public ILoop stop() {
-		if ( this.reg != null )
-			this.reg.unregister();
 		if ( this.monitorService != null )
 			this.monitorService.unregister();
 		return this;

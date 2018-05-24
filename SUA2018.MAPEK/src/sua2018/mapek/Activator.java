@@ -4,7 +4,6 @@ import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
 import es.upv.pros.tatami.autonomic.adaptation.framework.systemAPI.componentConfigurator.interfaces.IAdaptiveReadyComponentConfigurator;
-import sae.l1.acc.AdaptiveReadyComponent;
 
 public class Activator implements BundleActivator {
 
@@ -23,6 +22,7 @@ public class Activator implements BundleActivator {
 		Activator.context = bundleContext;
 		arc = new AdaptiveReadyComponent(bundleContext);
 		arc.start();
+		arc.deploy(null);
 	}
 
 	/*

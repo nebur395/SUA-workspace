@@ -9,3 +9,5 @@ Import-Package: es.upv.pros.iot.smartcar.interfaces,
  es.upv.pros.tatami.autonomic.adaptation.framework.systemAPI.componentConfigurator.interfaces,
  es.upv.pros.tatami.autonomic.adaptation.framework.systemComponentsManager.interfaces,
  org.osgi.framework
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: SmartCar.Starter.Basic

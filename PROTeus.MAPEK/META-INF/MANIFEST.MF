@@ -7,3 +7,5 @@ Bundle-Vendor: tatami@pros
 Export-Package: es.upv.pros.tatami.autonomic.adaptation.framework.systemAPI.componentConfigurator.interfaces,
  es.upv.pros.tatami.autonomic.adaptation.framework.systemComponentsManager.exceptions,
  es.upv.pros.tatami.autonomic.adaptation.framework.systemComponentsManager.interfaces
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: PROTeus.MAPEK

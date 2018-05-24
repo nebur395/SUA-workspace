@@ -106,8 +106,8 @@ public class Activator_Example implements BundleActivator {
 	protected IAdaptiveReadyComponentConfigurator getARC(String id) {
 		Collection<ServiceReference<IAdaptiveReadyComponentConfigurator>> refs = null;
 		try {
-			refs = this.context.getServiceReferences(IAdaptiveReadyComponentConfigurator.class, "(id=" + id + ")");
-			return (IAdaptiveReadyComponentConfigurator) this.context.getService(refs.iterator().next());
+			refs = Activator_Example.context.getServiceReferences(IAdaptiveReadyComponentConfigurator.class, "(id=" + id + ")");
+			return (IAdaptiveReadyComponentConfigurator) Activator_Example.context.getService(refs.iterator().next());
 
 		} catch (InvalidSyntaxException e) {
 			return null;

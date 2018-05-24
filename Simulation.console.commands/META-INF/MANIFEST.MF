@@ -9,3 +9,5 @@ Import-Package: es.upv.dsic.mitss.sua.smartcarsae.mapek.components,
  es.upv.pros.tatami.autonomic.adaptation.framework.systemAPI.componentConfigurator.interfaces,
  org.osgi.framework
 Bundle-Activator: simulation.console.commands.Activator
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: Simulation.console.commands
