@@ -8,7 +8,7 @@ import es.upv.pros.tatami.autonomic.adaptation.framework.systemComponentsManager
 
 public class AdaptiveReadyComponent extends AdaptiveReadyComponentConfigurator {
 	
-	public static String SS_MAPEK = "SUA2018.MAPEK";
+	public static String ID = "MAPEK";
 	
 	
 	protected SUA2018_MAPEK_Loop acc = null;
@@ -57,13 +57,13 @@ public class AdaptiveReadyComponent extends AdaptiveReadyComponentConfigurator {
 
 	@Override
 	public Object getServiceSupply(String serviceSupply) {
-		if ( serviceSupply.equalsIgnoreCase(SS_MAPEK) )
+		if ( serviceSupply.equalsIgnoreCase(ID) )
 			return this.acc;
 		return null;
 	}
 
-	public String getName() {
-		return SS_MAPEK;
+	public String getId() {
+		return ID;
 	}
 
 }

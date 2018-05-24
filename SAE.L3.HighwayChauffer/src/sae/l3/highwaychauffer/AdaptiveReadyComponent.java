@@ -12,7 +12,7 @@ import es.upv.pros.tatami.autonomic.adaptation.framework.systemComponentsManager
 
 public class AdaptiveReadyComponent extends AdaptiveReadyComponentConfigurator {
 	
-	public static String SS_SAE_L3_HighwayChauffer = "IHighwayChauffer";
+	public static String SS_SAE_L3_HighwayChauffer = "HighwayChauffer";
 	public static String PAR_ACTIVATIONDISTANCE = "ActivationDistance";
 	
 	
@@ -78,7 +78,7 @@ public class AdaptiveReadyComponent extends AdaptiveReadyComponentConfigurator {
 		return null;
 	}
 	
-	public String getName() {
+	public String getId() {
 		return SS_SAE_L3_HighwayChauffer;
 	}
 

@@ -24,7 +24,7 @@ public class Plannifier implements IPlannifier {
 		List<IAdaptiveReadyComponentConfigurator> newActiveComponents = theSystemConfiguration.getAdaptiveReadyComponentList();
 		List<IAdaptiveReadyComponentConfigurator> currentActiveComponents = this.knowledge.getCurrentSystemConfiguration().getAdaptiveReadyComponentList();
 		List<IAdaptationAction> newAdaptationActionsList = new LinkedList<IAdaptationAction>();
-		
+		System.out.println("Recibido por el planificador: "+newActiveComponents.size());
 		/*
 		 * First iteration: It checks which of the current components have to be undeployed since they are
 		 * not in the new system configuration.

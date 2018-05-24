@@ -27,7 +27,7 @@ public class SUA2018_MAPEK_Loop implements ILoop {
 	protected IExecutor executor;
 	
 	protected BundleContext context = null;
-	protected ServiceRegistration reg = null, monitorService = null;
+	protected ServiceRegistration<?> reg = null, monitorService = null;
 	protected Dictionary<String, Object> properties = null;
 		
 	
@@ -51,7 +51,7 @@ public class SUA2018_MAPEK_Loop implements ILoop {
 	
 	public ILoop start() {
 		this.reg = this.context.registerService(ILoop.class, this, this.properties);
-		Hashtable props = new Hashtable();
+		Hashtable<String, String> props = new Hashtable<String, String>();
 		props.put("id", "NavigatorMonitor");
 		this.monitorService = this.context.registerService(IMonitor.class.getName(),
 				this.monitor, props);

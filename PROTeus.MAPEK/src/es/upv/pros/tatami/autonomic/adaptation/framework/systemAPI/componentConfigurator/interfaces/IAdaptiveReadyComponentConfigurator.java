@@ -17,6 +17,5 @@ public interface IAdaptiveReadyComponentConfigurator {
 
 	public IAdaptiveReadyComponentConfigurator start();
 	public IAdaptiveReadyComponentConfigurator stop();
-	public String getName();
 
 }

@@ -12,7 +12,7 @@ import es.upv.pros.tatami.autonomic.adaptation.framework.systemComponentsManager
 
 public class AdaptiveReadyComponent extends AdaptiveReadyComponentConfigurator {
 	
-	public static String SS_ManualDriving = "SAE.L0.ManualDriving";
+	public static String SS_ManualDriving = "ManualDriving";
 	
 	
 	protected SAE_L0_ManualDriving acc = null;
@@ -77,7 +77,7 @@ public class AdaptiveReadyComponent extends AdaptiveReadyComponentConfigurator {
 		return null;
 	}
 
-	public String getName() {
+	public String getId() {
 		return SS_ManualDriving;
 	}
 }

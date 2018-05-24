@@ -12,7 +12,7 @@ import es.upv.pros.tatami.autonomic.adaptation.framework.systemComponentsManager
 
 public class AdaptiveReadyComponent extends AdaptiveReadyComponentConfigurator {
 	
-	public static String SS_TrafficJamChauffer = "ITrafficJamChauffer";
+	public static String SS_TrafficJamChauffer = "TrafficJamChauffer";
 	public static String PAR_ACTIVATIONDISTANCE = "ActivationDistance";
 	
 	
@@ -78,7 +78,7 @@ public class AdaptiveReadyComponent extends AdaptiveReadyComponentConfigurator {
 		return null;
 	}
 
-	public String getName() {
+	public String getId() {
 		return SS_TrafficJamChauffer;
 	}
 

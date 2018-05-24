@@ -26,19 +26,18 @@ public class Executor implements IExecutor {
 	@Override
 	public void execute(IAdaptationPlan plan) throws BundleException, InvalidSyntaxException {
 		System.out.println("Recibido por el ejecutor: "+plan.getActions().size());
-		// TODO Auto-generated method stub
-		ServiceReference<?>[] refs = null;
-		refs = this.context.getAllServiceReferences(IAdaptiveReadyComponentConfigurator.class.getName(), null);
-//		this.knowledge.getCurrentSystemConfiguration().getAdaptiveReadyComponentList().clear();		
+		//		this.knowledge.getCurrentSystemConfiguration().getAdaptiveReadyComponentList().clear();		
 			for (IAdaptationAction n : plan.getActions()) {
 				System.out.println(n.getCurrentComponent().getId());
+				if(n.getCurrentAction() == EAdaptationAction.deploy) {
+					n.getCurrentComponent().deploy(null);
+				} else {
 					Collection<ServiceReference<IAdaptiveReadyComponentConfigurator>> al = this.context.getServiceReferences(IAdaptiveReadyComponentConfigurator.class, 
 							"(id="+n.getCurrentComponent().getId()+")");
 					for(ServiceReference<IAdaptiveReadyComponentConfigurator> a : al) {
 						IAdaptiveReadyComponentConfigurator adaptiveReady = (IAdaptiveReadyComponentConfigurator) this.context
 								.getService(a);
 						if (adaptiveReady.getId().equals(n.getCurrentComponent().getId())) {
-							System.out.println("Coincide");
 							if (n.getCurrentAction() == EAdaptationAction.deploy) {
 								adaptiveReady.deploy((ISystemComponentsManager) this.knowledge.getCurrentSystemConfiguration());
 							} else if (n.getCurrentAction() == EAdaptationAction.undeploy) {
@@ -48,6 +47,9 @@ public class Executor implements IExecutor {
 							System.out.println("Diferencias ["+adaptiveReady.getId()+", "+n.getCurrentComponent().getId()+"]");
 						}
 					}
+				}
+					
+					
 	//			this.knowledge.getCurrentSystemConfiguration().getAdaptiveReadyComponentList().add(n.getCurrentComponent());
 			}
 		this.knowledge.setCurrentAdaptionPlan(plan);

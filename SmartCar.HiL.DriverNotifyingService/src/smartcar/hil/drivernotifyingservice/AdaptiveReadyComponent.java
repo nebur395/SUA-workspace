@@ -12,7 +12,7 @@ import es.upv.pros.tatami.autonomic.adaptation.framework.systemComponentsManager
 
 public class AdaptiveReadyComponent extends AdaptiveReadyComponentConfigurator {
 	
-	public static String SS_DriverNotifyingService = "SmartCar.HiL.DriverNotifyingService";
+	public static String SS_DriverNotifyingService = "DriverNotifyingService";
 	public static String PAR_TIMEOUT = "Timeout";
 	
 	
@@ -80,7 +80,7 @@ public class AdaptiveReadyComponent extends AdaptiveReadyComponentConfigurator {
 		return null;
 	}
 
-	public String getName() {
+	public String getId() {
 		return SS_DriverNotifyingService;
 	}
 

@@ -12,7 +12,7 @@ import es.upv.pros.tatami.autonomic.adaptation.framework.systemComponentsManager
 
 public class AdaptiveReadyComponent extends AdaptiveReadyComponentConfigurator {
 	
-	public static String SS_DDTFallback = "SAE.L3.DDTFallback";
+	public static String SS_DDTFallback = "DDTFallback";
 	public static String PAR_ACTIVATIONDISTANCE = "ActivationDistance";
 	
 	
@@ -80,7 +80,7 @@ public class AdaptiveReadyComponent extends AdaptiveReadyComponentConfigurator {
 		return null;
 	}
 
-	public String getName() {
+	public String getId() {
 		return SS_DDTFallback;
 	}
 

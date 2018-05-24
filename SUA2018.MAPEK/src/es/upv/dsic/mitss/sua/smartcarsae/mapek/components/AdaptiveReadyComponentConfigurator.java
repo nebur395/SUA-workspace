@@ -13,7 +13,7 @@ public abstract class AdaptiveReadyComponentConfigurator implements IAdaptiveRea
 
 	protected BundleContext context = null;
 	protected Dictionary<String, Object> properties = null;
-	protected ServiceRegistration reg = null;
+	protected ServiceRegistration<?> reg = null;
 
 	public AdaptiveReadyComponentConfigurator(BundleContext context) {
 		this.context = context;
