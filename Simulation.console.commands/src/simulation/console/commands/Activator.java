@@ -9,7 +9,7 @@ import org.osgi.framework.ServiceRegistration;
 public class Activator implements BundleActivator {
 
 	private static BundleContext context;
-	protected ServiceRegistration commandProvReg = null;
+	protected ServiceRegistration<?> commandProvReg = null;
 
 	static BundleContext getContext() {
 		return context;
@@ -24,7 +24,7 @@ public class Activator implements BundleActivator {
 	public void start(BundleContext bundleContext) throws Exception {
 		Activator.context = bundleContext;
 
-		Hashtable props = new Hashtable();
+		Hashtable<String, Object> props = new Hashtable<String, Object>();
 		props.put("osgi.command.scope", "SmartCarSUA");
 		props.put("osgi.command.function", new String[] { 
 				"printCSC", 

@@ -60,8 +60,4 @@ public class AdaptiveReadyComponent extends AdaptiveReadyComponentConfigurator {
 			return this.acc;
 		return null;
 	}
-
-	public String getId() {
-		return SS_ManualDriving;
-	}
 }

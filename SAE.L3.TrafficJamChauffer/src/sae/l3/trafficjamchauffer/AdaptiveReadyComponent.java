@@ -65,8 +65,4 @@ public class AdaptiveReadyComponent extends AdaptiveReadyComponentConfigurator {
 		return null;
 	}
 
-	public String getId() {
-		return SS_TrafficJamChauffer;
-	}
-
 }

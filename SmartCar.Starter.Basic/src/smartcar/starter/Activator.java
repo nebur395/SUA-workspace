@@ -42,6 +42,11 @@ public class Activator implements BundleActivator {
 			arc_SAE_L1_ACC.deploy(null);
 		}
 
+		// SmartCar
+		IAdaptiveReadyComponentConfigurator arc_SAE_L3_TrafficJamChauffer = this.getARC("SAE.L3.TrafficJamChauffer");
+		if (arc_SAE_L3_TrafficJamChauffer != null) {
+			arc_SAE_L3_TrafficJamChauffer.deploy(null);
+		}
 
 	}
 
@@ -60,8 +65,8 @@ public class Activator implements BundleActivator {
 	protected IAdaptiveReadyComponentConfigurator getARC(String id) {
 		Collection<ServiceReference<IAdaptiveReadyComponentConfigurator>> refs = null;
 		try {
-			refs = this.context.getServiceReferences(IAdaptiveReadyComponentConfigurator.class, "(id=" + id + ")");
-			return (IAdaptiveReadyComponentConfigurator) this.context.getService(refs.iterator().next());
+			refs = Activator.context.getServiceReferences(IAdaptiveReadyComponentConfigurator.class, "(id=" + id + ")");
+			return (IAdaptiveReadyComponentConfigurator) Activator.context.getService(refs.iterator().next());
 		} catch (Exception e) {
 			return null;
 		}
