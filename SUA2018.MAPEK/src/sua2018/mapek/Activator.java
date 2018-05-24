@@ -1,15 +1,14 @@
 package sua2018.mapek;
 
+import java.util.Hashtable;
+
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
-
-import es.upv.pros.tatami.autonomic.adaptation.framework.systemAPI.componentConfigurator.interfaces.IAdaptiveReadyComponentConfigurator;
 
 public class Activator implements BundleActivator {
 
 	private static BundleContext context;
-	private IAdaptiveReadyComponentConfigurator arc = null;
-
+	private AdaptiveReadyComponent arc = null;
 	static BundleContext getContext() {
 		return context;
 	}
@@ -19,10 +18,13 @@ public class Activator implements BundleActivator {
 	 * @see org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext)
 	 */
 	public void start(BundleContext bundleContext) throws Exception {
+		Hashtable<String, Object> props = new Hashtable<String, Object>();
 		Activator.context = bundleContext;
 		arc = new AdaptiveReadyComponent(bundleContext);
-		arc.start();
+		props.put("id", arc.getId());
 		arc.deploy(null);
+		Activator.context.registerService(AdaptiveReadyComponent.class.getName(), arc, 
+				props);
 	}
 
 	/*
@@ -31,7 +33,7 @@ public class Activator implements BundleActivator {
 	 */
 	public void stop(BundleContext bundleContext) throws Exception {
 		if ( this.arc != null ) {
-			this.arc.stop();
+			this.arc.undeploy(null);
 		}
 		Activator.context = null;
 	}

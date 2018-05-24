@@ -42,12 +42,6 @@ public class Activator implements BundleActivator {
 			arc_SAE_L1_ACC.deploy(null);
 		}
 
-		// SmartCar
-		IAdaptiveReadyComponentConfigurator arc_SAE_L3_TrafficJamChauffer = this.getARC("SAE.L3.TrafficJamChauffer");
-		if (arc_SAE_L3_TrafficJamChauffer != null) {
-			arc_SAE_L3_TrafficJamChauffer.deploy(null);
-		}
-
 	}
 
 	/*
