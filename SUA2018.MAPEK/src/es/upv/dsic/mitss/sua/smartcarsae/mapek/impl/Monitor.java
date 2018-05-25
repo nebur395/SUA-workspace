@@ -28,13 +28,12 @@ public class Monitor extends MonitorAbstract implements IMonitor {
 		} else {
 			List<IAdaptationAction> currentActions = this.knowledge.getCurrentAdaptionPlan().getActions();
 			List<String> deployedComponents = new ArrayList<String>();
-			
+			 
 			for (IAdaptationAction cac : currentActions) {
-				if (cac.getCurrentAction() == EAdaptationAction.deploy)
+				if (cac.getCurrentAction() == EAdaptationAction.deploy || cac.getCurrentAction() == EAdaptationAction.undeploy)
 					deployedComponents.add(cac.getCurrentComponent().getId());
 			}
 			
-	
 			if (event.getRT().equals(EMonitorRT.DriverAsleep) || event.getRT().equals(EMonitorRT.DriverDistracted)) {
 				boolean cond1 = false;
 				for (String item : deployedComponents) {
@@ -65,8 +64,11 @@ public class Monitor extends MonitorAbstract implements IMonitor {
 	
 			else if (event.getRT().equals(EMonitorRT.ApproachingCity)) {
 				boolean cond1 = false;
-				for (String item : deployedComponents) {
-					if (item.contains("SAE.L3")) {
+				for (String item : deployedComponents) { 
+					if (item.contains("SAE.L3.ACC")) {
+						cond1 = true;
+					}
+					if (item.contains("SAE.L1.ACC")) {
 						cond1 = true;
 					}
 				}
