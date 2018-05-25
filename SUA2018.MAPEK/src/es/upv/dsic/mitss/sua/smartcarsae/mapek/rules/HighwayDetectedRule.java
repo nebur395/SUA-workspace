@@ -53,6 +53,10 @@ public class HighwayDetectedRule extends AdaptationRule {
 				}
 				
 			}
+			IAdaptiveReadyComponentConfigurator arc_SAE_L3_HighwayChauffer = this.getARC("SAE.L3.HighwayChauffer");
+			if(arc_SAE_L3_HighwayChauffer != null) {
+				servicesList.add(arc_SAE_L3_HighwayChauffer);
+			}
 			sysconfig.setAdaptiveReadyComponentList(servicesList);
 		} catch(Exception e) {
 			e.printStackTrace();

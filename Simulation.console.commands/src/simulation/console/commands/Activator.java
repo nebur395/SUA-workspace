@@ -29,7 +29,12 @@ public class Activator implements BundleActivator {
 		props.put("osgi.command.function", new String[] { 
 				"printCSC", 
 				"approachingCity",
-				"enteringHighway"
+				"enteringHighway",
+				"driverDistracted",
+				"trafficJam",
+				"driverAsleep",
+				"driverAttentive",
+				"failedDistanceSensor"
 				});
 		this.commandProvReg = Activator.context.registerService(MyCommandProvider.class.getName(),
 				new MyCommandProvider(Activator.context), props);

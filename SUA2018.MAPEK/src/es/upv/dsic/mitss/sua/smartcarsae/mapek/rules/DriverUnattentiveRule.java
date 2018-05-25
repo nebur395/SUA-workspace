@@ -43,7 +43,11 @@ public class DriverUnattentiveRule extends AdaptationRule {
 					if(arcc.getId().contentEquals("SAE.L3.HighwayChauffer") || 
 							arcc.getId().contentEquals("SAE.L3.TrafficJamChauffer")) {
 						level = 3;
-						break;
+						IAdaptiveReadyComponentConfigurator arc_DNS = this.getARC(arcc.getId());
+						if(arc_DNS != null) {
+							arc_DNS.setParameter("Timeout", 0);
+							servicesList.add(arc_DNS);
+						}
 					}
 				}
 			}

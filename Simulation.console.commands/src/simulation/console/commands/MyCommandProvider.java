@@ -115,4 +115,139 @@ public void enteringHighway() {
 		}
 	}
 
+	public void trafficJam() {
+		
+		ServiceReference<?>[] refs = null;
+	
+		try {
+			refs = this.context.getServiceReferences(IMonitor.class.getName(), "(id=NavigatorMonitor)");
+			if (refs == null || refs.length <= 0) {
+				System.out.println("Servicio no encontrado");
+				return;
+			}
+		} catch (InvalidSyntaxException e) {
+			e.printStackTrace();
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		try {
+			IMonitor navigatorMonitor = (IMonitor) this.context.getService(refs[0]);
+			if(navigatorMonitor != null) {
+				Event event = new Event(EMonitorRT.TrafficJamDetected);
+				navigatorMonitor.notifyEvent(event);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}	
+	
+public void driverDistracted() {
+		
+		ServiceReference<?>[] refs = null;
+
+		try {
+			refs = this.context.getServiceReferences(IMonitor.class.getName(), "(id=NavigatorMonitor)");
+			if (refs == null || refs.length <= 0) {
+				System.out.println("Servicio no encontrado");
+				return;
+			}
+		} catch (InvalidSyntaxException e) {
+			e.printStackTrace();
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		try {
+			IMonitor navigatorMonitor = (IMonitor) this.context.getService(refs[0]);
+			if(navigatorMonitor != null) {
+				Event event = new Event(EMonitorRT.DriverDistracted);
+				navigatorMonitor.notifyEvent(event);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void driverAsleep() {
+		
+		ServiceReference<?>[] refs = null;
+	
+		try {
+			refs = this.context.getServiceReferences(IMonitor.class.getName(), "(id=NavigatorMonitor)");
+			if (refs == null || refs.length <= 0) {
+				System.out.println("Servicio no encontrado");
+				return;
+			}
+		} catch (InvalidSyntaxException e) {
+			e.printStackTrace();
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		try {
+			IMonitor navigatorMonitor = (IMonitor) this.context.getService(refs[0]);
+			if(navigatorMonitor != null) {
+				Event event = new Event(EMonitorRT.DriverAsleep);
+				navigatorMonitor.notifyEvent(event);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void driverAttentive() {
+		
+		ServiceReference<?>[] refs = null;
+
+		try {
+			refs = this.context.getServiceReferences(IMonitor.class.getName(), "(id=NavigatorMonitor)");
+			if (refs == null || refs.length <= 0) {
+				System.out.println("Servicio no encontrado");
+				return;
+			}
+		} catch (InvalidSyntaxException e) {
+			e.printStackTrace();
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		try {
+			IMonitor navigatorMonitor = (IMonitor) this.context.getService(refs[0]);
+			if(navigatorMonitor != null) {
+				Event event = new Event(EMonitorRT.DriverAttentive);
+				navigatorMonitor.notifyEvent(event);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+public void failedDistanceSensor() {
+		
+		ServiceReference<?>[] refs = null;
+
+		try {
+			refs = this.context.getServiceReferences(IMonitor.class.getName(), "(id=NavigatorMonitor)");
+			if (refs == null || refs.length <= 0) {
+				System.out.println("Servicio no encontrado");
+				return;
+			}
+		} catch (InvalidSyntaxException e) {
+			e.printStackTrace();
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		try {
+			IMonitor navigatorMonitor = (IMonitor) this.context.getService(refs[0]);
+			if(navigatorMonitor != null) {
+				Event event = new Event(EMonitorRT.DistanceSensorFailure);
+				navigatorMonitor.notifyEvent(event);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 }
