@@ -20,10 +20,11 @@ public class Monitor extends MonitorAbstract implements IMonitor {
 	@Override
 	public void notifyEvent(IEvent event) {
 		try {
-			System.out.println("Notificado");
+			System.out.println("Notificado "+event.getRT());
 		//Al final no se ha realizado la implementación del Patron de diseño Template.
-			//this.analyzer.notifyEvent(event);
+		//this.analyzer.notifyEvent(event);
 		if( this.knowledge.getCurrentAdaptionPlan() == null) {
+
 			this.analyzer.notifyEvent(event);
 		} else {
 			List<IAdaptationAction> currentActions = this.knowledge.getCurrentAdaptionPlan().getActions();
@@ -37,7 +38,7 @@ public class Monitor extends MonitorAbstract implements IMonitor {
 			if (event.getRT().equals(EMonitorRT.DriverAsleep) || event.getRT().equals(EMonitorRT.DriverDistracted)) {
 				boolean cond1 = false;
 				for (String item : deployedComponents) {
-					if (item.contains("SAE.L3"))
+					if (item.contains("SAE.L3.ACC"))
 						cond1 = true;
 				}
 				if (cond1)
@@ -66,9 +67,6 @@ public class Monitor extends MonitorAbstract implements IMonitor {
 				boolean cond1 = false;
 				for (String item : deployedComponents) { 
 					if (item.contains("SAE.L3.ACC")) {
-						cond1 = true;
-					}
-					if (item.contains("SAE.L1.ACC")) {
 						cond1 = true;
 					}
 				}

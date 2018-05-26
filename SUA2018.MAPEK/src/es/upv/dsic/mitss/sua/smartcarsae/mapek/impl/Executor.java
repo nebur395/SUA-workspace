@@ -25,30 +25,22 @@ public class Executor implements IExecutor {
 	@Override
 	public void execute(IAdaptationPlan plan) throws BundleException, InvalidSyntaxException {
 		System.out.println("Recibido por el ejecutor: "+plan.getActions().size());
-		//		this.knowledge.getCurrentSystemConfiguration().getAdaptiveReadyComponentList().clear();		
-			for (IAdaptationAction n : plan.getActions()) {
-				System.out.println(n.getCurrentComponent().getId());
-				if(n.getCurrentAction() == EAdaptationAction.deploy) {
-					System.out.println("Deploy: "+n.getCurrentComponent().getId());
-					n.getCurrentComponent().deploy(null);
-				} else {
-					System.out.println("Undeploy: "+n.getCurrentComponent().getId());
-					Collection<ServiceReference<IAdaptiveReadyComponentConfigurator>> al = this.context.getServiceReferences(IAdaptiveReadyComponentConfigurator.class, 
-							"(id="+n.getCurrentComponent().getId()+")");
-					for(ServiceReference<IAdaptiveReadyComponentConfigurator> a : al) {
-						IAdaptiveReadyComponentConfigurator adaptiveReady = (IAdaptiveReadyComponentConfigurator) this.context
-								.getService(a);
-						if (n.getCurrentAction() == EAdaptationAction.deploy) {
-							adaptiveReady.deploy(null);
-						} else if (n.getCurrentAction() == EAdaptationAction.undeploy) {
-							adaptiveReady.undeploy(null);
-						}
-					}
-				}
-					
-					
-	//			this.knowledge.getCurrentSystemConfiguration().getAdaptiveReadyComponentList().add(n.getCurrentComponent());
-			}
+		this.knowledge.getCurrentSystemConfiguration().getAdaptiveReadyComponentList().clear();
+		
+		for (IAdaptationAction n : plan.getActions()) {
+			System.out.println(n.getCurrentComponent().getId()); 
+			Collection<ServiceReference<IAdaptiveReadyComponentConfigurator>> al = this.context.getServiceReferences(IAdaptiveReadyComponentConfigurator.class, 
+						"(id="+n.getCurrentComponent().getId()+")");
+			for(ServiceReference<IAdaptiveReadyComponentConfigurator> a : al) {
+				IAdaptiveReadyComponentConfigurator adaptiveReady = (IAdaptiveReadyComponentConfigurator) this.context.getService(a);
+				if (n.getCurrentAction() == EAdaptationAction.deploy) {
+					adaptiveReady.deploy(null);
+				} else if (n.getCurrentAction() == EAdaptationAction.undeploy) {
+					adaptiveReady.undeploy(null);
+				} 
+			} 
+			this.knowledge.getCurrentSystemConfiguration().getAdaptiveReadyComponentList().add(n.getCurrentComponent());
+		}
 		this.knowledge.setCurrentAdaptionPlan(plan);
 	}
 	
